@@ -1,14 +1,25 @@
 const mongoose = require("mongoose");
-const userSchema=new mongoose.Schema({
+const bcrypt = require("bcrypt");
+const userSchema = new mongoose.Schema({
     username: {
         type:String,
         unique:true
     },
-    password: String,
+    password: {
+        String,
+        required: true
+    },
     role: {
-        type : String,
-        enum:["user","admin"],
-        default:"user"
+        type : mongoose.Schema.Types.ObjectId,
+        ref: "UserRole",
+        required: [true, "Every User required to have a specific role!"]
     }
 });
-module.exports = mongoose.model("User",userSchema);
+//Ne kelljen kézzel hash-elni mindig:
+userSchema.pre("save", async function(next) {
+    if(!this.isModified("password"))
+        return;
+    this.password = await bcrypt.hash(this.password, 12);
+    next();
+});
+module.exports = mongoose.model("User", userSchema);
