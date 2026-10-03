@@ -18,14 +18,14 @@ class InventorDto extends InventorDtoData {
         this._diedAt = diedAt;
     }
 
-    getId() { return this._id; }
-    getName() { return this._name; }
-    getBornAt() { return this._bornAt; }
-    getDiedAt() { return this._diedAt; }
+    get getId() { return this._id; }
+    get getName() { return this._name; }
+    get getBornAt() { return this._bornAt; }
+    get getDiedAt() { return this._diedAt; }
 
-    setId(id = "") { this._id = id; }
-    setName(name = "") { this._name = name; }
-    setBornAt(bornAt = 0) { this._bornAt = bornAt; }
-    setDiedAt(diedAt = 0) { this._diedAt = diedAt; }
+    set setId(id = "") { this._id = id; }
+    set setName(name = "") { this._name = name; }
+    set setBornAt(bornAt = 0) { this._bornAt = bornAt; }
+    set setDiedAt(diedAt = 0) { this._diedAt = diedAt; }
 }
 module.exports = InventorDto;
