@@ -52,25 +52,30 @@ async function JoinInventorAndInvention(seedSource = "", inventors = new Map(), 
 }
 
 async function main() {
-    await mongoose.connect(process.env.MONGO_URI);
-    //Role-ok seedelése:
-    const roleseed = new roleSeeder();
-    await roleseed.down();
-    await roleseed.up("roles.txt");
-    //Inventorok seedelése:
-    const inventorseed = new inventorSeeder();
-    await inventorseed.down();
-    await inventorseed.up("kutato.txt");
-    //Inventionok seedelése:
-    const inventionseed = new inventionSeeder();
-    await inventionseed.down();
-    await inventionseed.up("talalmany.txt");
-    //Kapcsolás:
-    await JoinInventorAndInvention(
-        "kapcsol.txt",
-        inventorseed.getInventors,
-        inventionseed.getInventions
-    );
+    try {
+        const connection = await mongoose.connect(process.env.MONGO_URI);
+        //Role-ok seedelése:
+        const roleseed = new roleSeeder();
+        await roleseed.down();
+        await roleseed.up("roles.txt");
+        //Inventorok seedelése:
+        const inventorseed = new inventorSeeder();
+        await inventorseed.down();
+        await inventorseed.up("kutato.txt");
+        //Inventionok seedelése:
+        const inventionseed = new inventionSeeder();
+        await inventionseed.down();
+        await inventionseed.up("talalmany.txt");
+        //Kapcsolás:
+        await JoinInventorAndInvention(
+            "kapcsol.txt",
+            inventorseed.getInventors,
+            inventionseed.getInventions
+        );
+        await connection.disconnect();
+    } catch(ex) {
+        console.error("Erro while trying to seed the database: " + ex.message);
+    }
 }
 
 //Futtatás:
