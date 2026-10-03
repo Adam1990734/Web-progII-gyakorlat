@@ -1,21 +1,22 @@
 const mongoose = require("mongoose");
 const inventorSchema = new mongoose.Schema({
-    nev: {
-        alias: "name",
+    name: {
         type: String,
         required: [true, "Every Inventor should have a name!"],
         maxlenght: 40
     },
-    szul: {
-        alias: "bornAt",
+    bornAt: {
         type: Number,
         required: [true, "Every Inventor should have a born date!"],
         max: 2026
     },
-    meghal: {
-        alias: "diedAt",
+    diedAt: {
         type: Number,
         max: 2026
-    }
+    },
+    inventions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Invention"
+    }]
 });
-module.exports = mongoose.model("Inventor", userRoleSchema);
+module.exports = mongoose.model("Inventor", inventorSchema);
