@@ -4,10 +4,10 @@ const readline = require("readline");
 const Invention = require("./../../models/invention/Invention");
 
 class inventionSeederData {
-    _inventionContainer = [];
+    _inventionContainer = new Map();
 }
 
-export default class inventionSeeder extends inventionSeederData {
+class inventionSeeder extends inventionSeederData {
     async up(seedSource = "") {
         const seedPath = path.join(
             process.env.SEED_RESOURCES,
@@ -20,14 +20,20 @@ export default class inventionSeeder extends inventionSeederData {
             input: stream,
             crlfDelay: Infinity
         });
+        {
+            const it = rl[Symbol.asyncIterator]();
+            await it.next();
+        }
         for await (const line of rl) {
             const splitted = line.split("\t").map(elem => elem.trim());
             const invention = await Invention.create({
-                name: splitted[1]
+                name: splitted[1],
+                inventors: []
             });
-            this._inventionContainer.push(invention);
+            this._inventionContainer[Number(splitted[0])] = invention;
         }
     }
     async down() { await Invention.deleteMany(); }
     get getInventions() { return this._inventionContainer; }
 }
+module.exports = inventionSeeder;

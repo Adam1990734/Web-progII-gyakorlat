@@ -7,8 +7,9 @@ class roleSeederData {
     _roleContainer = [];
 }
 
-export default class roleSeeder extends roleSeederData {
+class roleSeeder extends roleSeederData {
     async up(seedSource = "") {
+        console.log(process.env.SEED_RESOURCES);
         const seedPath = path.join(
             process.env.SEED_RESOURCES,
             seedSource
@@ -20,10 +21,15 @@ export default class roleSeeder extends roleSeederData {
             input: stream,
             crlfDelay: Infinity
         });
+        {
+            const it = rl[Symbol.asyncIterator]();
+            await it.next();
+        }
         for await (const line of rl) {
             const splitted = line.split("\t").map(elem => elem.trim());
             const userRole = await UserRole.create({
-                name: splitted[1]
+                name: splitted[1],
+                users: []
             });
             this._roleContainer.push(userRole);
         }
@@ -31,3 +37,4 @@ export default class roleSeeder extends roleSeederData {
     async down() { await UserRole.deleteMany(); }
     get getRoles() { return this._roleContainer; }
 }
+module.exports = roleSeeder;
