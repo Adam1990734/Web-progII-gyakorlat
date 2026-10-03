@@ -3,7 +3,7 @@ const inventorSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Every Inventor should have a name!"],
-        maxlenght: 40
+        maxlenght: [40, "The maximum name lenght is 40 characters!"]
     },
     bornAt: {
         type: Number,

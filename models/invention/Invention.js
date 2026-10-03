@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const inventionSchema = new mongoose.Schema({
     name: {
         type: String,
-        maxlenght: 80
+        maxlength: [80, "The maximum invention name is 80 characters!"]
     },
     inventors: [{
         type: mongoose.Schema.Types.ObjectId,

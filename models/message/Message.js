@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const messageSchema = new mongoose.Schema({
     content: {
         type: String,
-        maxlength: 500,
+        maxlength: [500, "The maximum content is 500 characters!"],
         required: [true, "There is no message without content!"]
     },
     createdAt: {
