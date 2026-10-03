@@ -3,11 +3,11 @@ const path = require("path");
 const readline = require("readline");
 const UserRole = require("./../../models/user/userRole");
 
-class inventionSeederData {
+class roleSeederData {
     _roleContainer = [];
 }
 
-export default class inventionSeeder extends inventionSeederData {
+export default class roleSeeder extends roleSeederData {
     async up(seedSource = "") {
         const seedPath = path.join(
             process.env.SEED_RESOURCES,
