@@ -1,0 +1,27 @@
+{
+  "name": "web-progii-gyakorlat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adam1990734/Web-progII-gyakorlat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Adam1990734/Web-progII-gyakorlat/issues"
+  },
+  "homepage": "https://github.com/Adam1990734/Web-progII-gyakorlat#readme",
+  "dependencies": {
+    "connect-mongo": "^6.0.0",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  }
+}
