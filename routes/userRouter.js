@@ -1,12 +1,12 @@
 const router = require("express").Router();
-const controller = require("../controllers/mainController");
+const controller = require("../controllers/userController");
 
-isLoggedIn=(req,res,next)=>{
+isLoggedIn = (req,res,next) => {
     if(req.session.user) { return next(); }
     res.redirect("/login");
 }
-isAdmin=(req,res,next)=>{
-    if(req.session.user && req.session.user.role==="admin") { return next(); }
+isAdmin = (req,res,next) => {
+    if(req.session.user && req.session.user.role.name === "admin") { return next(); }
     res.redirect("/");
 }
 
