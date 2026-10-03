@@ -12,11 +12,16 @@ const userSchema = new mongoose.Schema({
         minlenght: 60,
         maxlenght: 60
     },
+    //Navigációs tulajdonságok:
     role: {
         type : mongoose.Schema.Types.ObjectId,
         ref: "userRole",
         required: [true, "Every User required to have a specific role!"]
-    }
+    },
+    messages: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Message"
+    }]
 });
 //Ne kelljen kézzel hash-elni mindig:
 userSchema.pre("save", async function(next) {
