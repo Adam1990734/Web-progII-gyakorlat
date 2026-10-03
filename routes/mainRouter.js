@@ -6,7 +6,7 @@ isLoggedIn=(req,res,next)=>{
     res.redirect("/login");
 }
 isAdmin=(req,res,next)=>{
-    if(req.session.user && req.session.user.role==="admin"){return next();}
+    if(req.session.user && req.session.user.role==="admin") { return next(); }
     res.redirect("/");
 }
 

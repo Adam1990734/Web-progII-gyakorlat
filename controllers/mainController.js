@@ -1,4 +1,5 @@
-const User = require("../models/User");
+const User = require("../models/user/User");
+const UserRole = require("../models/user/userRole");
 const bcrypt = require("bcrypt");
 
 exports.homeIndex = (req, res) => { res.render("home"); };
@@ -12,8 +13,12 @@ exports.registerPost = async (req, res) => {
         req.session.message = "This user already exists!";
         return res.redirect("/register");
     }
-    const hash = await bcrypt.hash(req.body.password, 10);
-    await User.create({ username: req.body.username, password: hash, role: "user" });
+    const defaultRole = await UserRole.findOne({ name: "USER" });
+    await User.create({
+        username: req.body.username,
+        password: req.body.password,
+        role: defaultRole
+    });
     req.session.message = "Successful registration! You can log in.";
     res.redirect("/login");
 };
