@@ -17,7 +17,7 @@ exports.registerPost = async (req, res) => {
     await User.create({
         username: req.body.username,
         password: req.body.password,
-        role: defaultRole
+        role: defaultRole.name
     });
     req.session.message = "Successful registration! You can log in.";
     res.redirect("/login");

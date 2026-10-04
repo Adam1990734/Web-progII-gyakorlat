@@ -7,3 +7,5 @@ const Inventor = require("../models/inventor/Inventor");//POCO
 const inventorDto = require("../models/inventor/inventorDto");//Fogadott
 const inventorResponseDto = require("../models/inventor/inventorResponseDto");//Küldendő
 const inventorService = require("../service/inventorService");//Kezelő
+
+import { Request, Response } from "express";
