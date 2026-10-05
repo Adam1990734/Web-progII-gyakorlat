@@ -20,10 +20,7 @@ exports.contactIndexGET = (req, res) => res.render("message/create");
 exports.contactCreateMessagePOST = async (req, res) => {
     const messageservice = new messageService();
     const user = req.session.user === undefined ? null : 
-        await User.find({
-            username: req.session.user.username
-        });
-    console.log(req.session.user);
+        await User.findById(req.session.user.id);
     await messageservice.create(
         user,
         new messageDto(
