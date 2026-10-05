@@ -8,4 +8,4 @@ const inventorDto = require("../models/inventor/inventorDto");//Fogadott
 const inventorResponseDto = require("../models/inventor/inventorResponseDto");//Küldendő
 const inventorService = require("../service/inventorService");//Kezelő
 
-import { Request, Response } from "express";
+const express = require("express");

@@ -3,21 +3,20 @@ const messageDto = require("../models/message/messageDto");//Fogadott
 const messageResponseDto = require("../models/message/messageResponseDto");//Küldendő
 const messageService = require("../service/messageService");//Kezelő
 
-import { Request, Response } from "express";
-import messageService from "../service/messageService";
+const express = require("express");
 
 /**
  * 
- * @param {Request} req 
- * @param {Response} res
+ * @param {express.Request} req 
+ * @param {express.Response} res
  */
-exports.contactIndex = (req, res) => res.render("message/index");
+exports.contactIndexGET = (req, res) => res.render("message/create");
 
 /**
- * @param {Request} req 
- * @param {Response} res
+ * @param {express.Request} req 
+ * @param {express.Response} res
  */
-exports.contactCreateMessage = async (req, res) => {
+exports.contactCreateMessagePOST = async (req, res) => {
     const messageservice = new messageService();
     await messageservice.create(
         req.session.user === undefined || req.session.user === null ?

@@ -9,7 +9,6 @@ class roleSeederData {
 
 class roleSeeder extends roleSeederData {
     async up(seedSource = "") {
-        console.log(process.env.SEED_RESOURCES);
         const seedPath = path.join(
             process.env.SEED_RESOURCES,
             seedSource
