@@ -4,6 +4,7 @@ class inventionDtoData {
 
 class inventionDto extends inventionDtoData {
     constructor(name = "") {
+        super();
         this._name = name;
     }
 

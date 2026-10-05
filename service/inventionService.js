@@ -42,7 +42,7 @@ class inventionService {
     //Ez itt a rendes POCO osztály:
     static toDto(invention) {
         return new InventionResponseDto(
-            invention._id,
+            invention._id.toString(),
             invention._name,
             invention.inventors != undefined || invention.inventors != null ? invention.inventors.map(inventor => inventor._id) : []
         );

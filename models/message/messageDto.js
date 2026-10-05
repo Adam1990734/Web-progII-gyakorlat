@@ -8,6 +8,7 @@ class messageDto extends messageDtoData {
         content = "",
         createdAt = Date.now()
     ) {
+        super();
         this._content = content;
         this._createdAt = createdAt;
     }

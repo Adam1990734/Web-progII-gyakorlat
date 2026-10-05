@@ -14,6 +14,7 @@ class InventorResponseDto extends InventorDtoResponseData {
         diedAt = 0,
         invention_ids = []
     ) {
+        super();
         this._id = id;
         this._name = name;
         this._bornAt = bornAt;

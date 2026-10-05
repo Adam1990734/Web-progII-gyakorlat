@@ -14,11 +14,13 @@ exports.registerPost = async (req, res) => {
         return res.redirect("/register");
     }
     const defaultRole = await UserRole.findOne({ name: "USER" });
-    await User.create({
+    const user = await User.create({
         username: req.body.username,
         password: req.body.password,
-        role: defaultRole.name
+        role: defaultRole
     });
+    defaultRole.users.push(user);
+    defaultRole.save();
     req.session.message = "Successful registration! You can log in.";
     res.redirect("/login");
 };

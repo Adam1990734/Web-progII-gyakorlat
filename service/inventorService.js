@@ -46,7 +46,7 @@ class inventorService {
     //Ez itt a rendes POCO osztály:
     static toDto(inventor) {
         return new InventorResponseDto(
-            inventor._id,
+            inventor._id.toString(),
             inventor.name,
             inventor.BornAt,
             inventor.DiedAt,
