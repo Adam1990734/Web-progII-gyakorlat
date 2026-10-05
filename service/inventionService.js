@@ -5,9 +5,9 @@ const inventionResponseDto = require("./../models/invention/inventionResponseDto
 class inventionService {
     async findAll(page = -1, size = -1) {
         const inventions =
-                page > -1 || size > -1 ?
+                page > -1 && size > -1 ?
                     await Invention.find()
-                        .skip((page-1)*size)
+                        .skip(page*size)
                         .limit(size)
                 : await Invention.find();
         return inventions.map(invention => inventionService.toDto(invention));

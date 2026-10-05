@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 //Routerek:
 app.use("/", require("./routes/userRouter"));
 app.use("/contact", require("./routes/contactRouter"));
-app.use("/message", require("./routes/contactRouter"));
+app.use("/message", require("./routes/messageRouter"));
 app.use("/crud", require("./routes/crudRouter"));
 
 const port = 3000;

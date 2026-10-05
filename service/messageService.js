@@ -5,11 +5,22 @@ const messageResponseDto = require("./../models/message/messageResponseDto");
 class messageService {
     async findAll(page = -1, size = -1) {
         const messages =
-                page > -1 || size > -1 ?
+                page > -1 && size > -1 ?
                     await Message.find()
-                        .skip((page-1)*size)
+                        .skip(page*size)
                         .limit(size)
                 : await Message.find();
+        return messages.map(message => messageService.toDto(message));
+    }
+    async findAllOrderByDate(page = -1, size = -1) {
+        const messages =
+                page > -1 && size > -1 ?
+                    await Message.find()
+                        .populate("user")
+                        .sort({ createdAt: -1 })
+                        .skip(page*size)
+                        .limit(size)
+                : await Message.find().populate("user");
         return messages.map(message => messageService.toDto(message));
     }
     /**
@@ -52,7 +63,7 @@ class messageService {
                 message.content,
                 message.createdAt,
                 "",
-                ""
+                "Anonymouse"
             );
         return new messageResponseDto(
             message._id.toString(),
