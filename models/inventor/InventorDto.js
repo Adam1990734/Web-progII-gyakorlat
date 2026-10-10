@@ -12,6 +12,7 @@ class InventorDto extends InventorDtoData {
         diedAt = 0,
         inventions = []
     ) {
+        super();
         this._name = name;
         this._bornAt = bornAt;
         this._diedAt = diedAt;

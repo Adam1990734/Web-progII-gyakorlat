@@ -23,6 +23,12 @@ app.use((req, res, next) => {
     req.session.message = "";
     next();
 });
-app.use("/", require("./routes/mainRouter"));
+
+//Routerek:
+app.use("/", require("./routes/userRouter"));
+app.use("/contact", require("./routes/contactRouter"));
+app.use("/message", require("./routes/messageRouter"));
+app.use("/crud", require("./routes/crudRouter"));
+
 const port = 3000;
 app.listen(port, () => {console.log(`Server: http://localhost:${port}`);});

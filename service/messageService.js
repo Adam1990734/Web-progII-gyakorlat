@@ -2,42 +2,53 @@ const Message = require("./../models/message/Message");
 const messageDto = require("./../models/message/messageDto");
 const messageResponseDto = require("./../models/message/messageResponseDto");
 
-const User = require("../models/user/User");
-
 class messageService {
     async findAll(page = -1, size = -1) {
         const messages =
-                page > -1 || size > -1 ?
+                page > -1 && size > -1 ?
                     await Message.find()
-                        .skip((page-1)*size)
+                        .skip(page*size)
                         .limit(size)
                 : await Message.find();
-        return messages.map(inventor => messageService.toDto(inventor));
+        return messages.map(message => messageService.toDto(message));
+    }
+    async findAllOrderByDate(page = -1, size = -1) {
+        const messages =
+                page > -1 && size > -1 ?
+                    await Message.find()
+                        .populate("user")
+                        .sort({ createdAt: -1 })
+                        .skip(page*size)
+                        .limit(size)
+                : await Message.find().populate("user");
+        return messages.map(message => messageService.toDto(message));
     }
     /**
      * 
      * @param {messageDto} message
      */
     async create(user, message) {
-        const inventorCreated = await Message.create({
+        const messageCreated = await Message.create({
             content: message.getContent,
             createdAt: message.getCreatedAt,
             user: user
         });
-        return messageService.toDto(inventorCreated);
+        user.messages.push(messageCreated);
+        user.save();
+        return messageService.toDto(messageCreated);
     }
     /**
      * 
      * @param {messageDto} message 
      */
     async update(id, message) {
-        const inventorUpdated = await Message.findByIdAndUpdate(
+        const messageUpdated = await Message.findByIdAndUpdate(
         { _id: id },
         {
             content: message.getContent,
             createdAt: message.getCreatedAt
         });
-        return messageService.toDto(inventorUpdated);
+        return messageService.toDto(messageUpdated);
     }
     async delete(id) {
         await Message.findByIdAndDelete({
@@ -46,11 +57,19 @@ class messageService {
     }
     //Ez itt a rendes POCO osztály:
     static toDto(message) {
+        if(message.user == undefined || message.user == null)
+            return new messageResponseDto(
+                message._id.toString(),
+                message.content,
+                message.createdAt,
+                "",
+                "Anonymouse"
+            );
         return new messageResponseDto(
-            message._id,
+            message._id.toString(),
             message.content,
             message.createdAt,
-            message.user._id,
+            message.user._id.toString(),
             message.user.username
         );
     }

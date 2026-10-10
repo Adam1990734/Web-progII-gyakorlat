@@ -5,9 +5,9 @@ const inventionResponseDto = require("./../models/invention/inventionResponseDto
 class inventionService {
     async findAll(page = -1, size = -1) {
         const inventions =
-                page > -1 || size > -1 ?
+                page > -1 && size > -1 ?
                     await Invention.find()
-                        .skip((page-1)*size)
+                        .skip(page*size)
                         .limit(size)
                 : await Invention.find();
         return inventions.map(invention => inventionService.toDto(invention));
@@ -42,7 +42,7 @@ class inventionService {
     //Ez itt a rendes POCO osztály:
     static toDto(invention) {
         return new InventionResponseDto(
-            invention._id,
+            invention._id.toString(),
             invention._name,
             invention.inventors != undefined || invention.inventors != null ? invention.inventors.map(inventor => inventor._id) : []
         );

@@ -5,9 +5,9 @@ const InventorResponseDto = require("./../models/inventor/inventorResponseDto");
 class inventorService {
     async findAll(page = -1, size = -1) {
         const inventors =
-                page > -1 || size > -1 ?
+                page > -1 && size > -1 ?
                     await Inventor.find()
-                        .skip((page-1)*size)
+                        .skip(page*size)
                         .limit(size)
                 : await Inventor.find();
         return inventors.map(inventor => inventorService.toDto(inventor));
@@ -46,7 +46,7 @@ class inventorService {
     //Ez itt a rendes POCO osztály:
     static toDto(inventor) {
         return new InventorResponseDto(
-            inventor._id,
+            inventor._id.toString(),
             inventor.name,
             inventor.BornAt,
             inventor.DiedAt,

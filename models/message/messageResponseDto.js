@@ -15,6 +15,7 @@ class messageResponseDto extends messageResponseDtoData {
         userid = "",
         username = ""
     ) {
+        super();
         this._id = id;
         this._content = content;
         this._createdAt = createdAt;

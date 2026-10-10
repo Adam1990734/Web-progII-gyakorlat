@@ -4,7 +4,11 @@ class inventionDtoData {
 }
 
 class inventionDto extends inventionDtoData {
-    constructor(name = "", inventors = []) {
+    constructor(
+        name = "",
+        inventors = []
+    ) {
+        super();
         this._name = name;
         this._inventors = inventors;
     }

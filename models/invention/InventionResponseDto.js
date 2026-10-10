@@ -10,6 +10,7 @@ class inventionResponseDto extends inventionResponseDtoData {
         name = "",
         inventors = []
     ) {
+        super();
         this._id = id;
         this._name = name;
         this._inventors = inventors;
