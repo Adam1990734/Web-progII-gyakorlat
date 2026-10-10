@@ -12,10 +12,10 @@ class messageDto extends messageDtoData {
         this._createdAt = createdAt;
     }
     
-    get getContent() { return this._content; }
-    get getCreatedAt() { return this._createdAt; }
+    getContent() { return this._content; }
+    getCreatedAt() { return this._createdAt; }
 
-    set setContent(content = "") { this._content = content; }
-    set setCreatedAt(createdAt = Date.now()) { this._createdAt = createdAt; }
+    setContent(content = "") { this._content = content; }
+    setCreatedAt(createdAt = Date.now()) { this._createdAt = createdAt; }
 }
 module.exports = messageDto;

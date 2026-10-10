@@ -1,14 +1,20 @@
 class inventionDtoData {
     _name;
+    _inventors;
 }
 
 class inventionDto extends inventionDtoData {
-    constructor(name = "") {
+    constructor(name = "", inventors = []) {
         this._name = name;
+        this._inventors = inventors;
     }
 
-    get getName() { return this._name; }
+    getName() { return this._name; }
 
-    set setName(name = "") { this._name = name; }
+    setName(name) { this._name = name; }
+
+    getInventors() { return this._inventors; }
+
+    setInventors(inventors) { this._inventors = inventors; }
 }
 module.exports = inventionDto;

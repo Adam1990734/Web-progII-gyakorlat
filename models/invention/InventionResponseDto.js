@@ -1,26 +1,26 @@
 class inventionResponseDtoData {
     _id;
     _name;
-    _inventor_ids;
+    _inventors;
 }
 
 class inventionResponseDto extends inventionResponseDtoData {
     constructor(
         id = "",
         name = "",
-        inventor_ids = []
+        inventors = []
     ) {
         this._id = id;
         this._name = name;
-        this._inventor_ids = inventor_ids;
+        this._inventors = inventors;
     }
 
     getId() { return this._id; }
     getName() { return this._name; }
-    getInventorIds() { return this._inventor_ids; }
+    getInventorIds() { return this._inventors; }
 
-    setId(id = "") { this._id = id; }
-    setName(name = "") { this._name = name; }
-    setInventorIds(inventor_ids = []) { this._inventor_id = inventor_ids; }
+    setId(id) { this._id = id; }
+    setName(name) { this._name = name; }
+    setInventors(inventors) { this._inventors = inventors; }
 }
 module.exports = inventionResponseDto;

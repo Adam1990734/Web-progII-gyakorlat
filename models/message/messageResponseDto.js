@@ -21,16 +21,16 @@ class messageResponseDto extends messageResponseDtoData {
         this._userid = userid;
         this._username = username;
     }
-    get getId() { return this._id; }
-    get getContent() { return this._content; }
-    get getCreatedAt() { return this._createdAt; }
-    get getUserId() { return this._userid; }
-    get getUserName() { return this._username; }
+    getId() { return this._id; }
+    getContent() { return this._content; }
+    getCreatedAt() { return this._createdAt; }
+    getUserId() { return this._userid; }
+    getUserName() { return this._username; }
 
-    set setId(id = "") { this._id = id; }
-    set setContent(content = "") { this._content = content; }
-    set setCreatedAt(createdAt = Date.now()) { this._createdAt = createdAt; }
-    set setUserId(userid = "") { this._userid = userid; }
-    set setUserName(username = "") { this._username = username; }
+    setId(id = "") { this._id = id; }
+    setContent(content = "") { this._content = content; }
+    setCreatedAt(createdAt = Date.now()) { this._createdAt = createdAt; }
+    setUserId(userid = "") { this._userid = userid; }
+    setUserName(username = "") { this._username = username; }
 }
 module.exports = messageResponseDto;
