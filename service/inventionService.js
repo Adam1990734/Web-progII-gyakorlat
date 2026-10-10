@@ -1,5 +1,6 @@
 const Invention = require("./../models/invention/Invention");
 const inventionDto = require("./../models/invention/inventionDto");
+const inventionShortDto = require("./../models/invention/inventionShortDto");
 const inventionResponseDto = require("./../models/invention/inventionResponseDto");
 
 class inventionService {
@@ -39,11 +40,23 @@ class inventionService {
             _id: id
         });
     }
+    static toShortDto(invention) {
+        return new inventionShortDto(
+            invention._id,
+            invention.name
+        );
+    }
     //Ez itt a rendes POCO osztály:
-    static toDto(invention) {
-        return new InventionResponseDto(
+    static toRespDto(invention) {
+        return new inventionResponseDto(
             invention._id.toString(),
-            invention._name,
+            invention.name,
+            invention.inventors != undefined || invention.inventors != null ? invention.inventors.map(inventor => this.toShortDto(inventor)) : []
+        );
+    }
+    static toSimpDto(invention) {
+        return new inventionDto(
+            invention.name,
             invention.inventors != undefined || invention.inventors != null ? invention.inventors.map(inventor => inventor._id) : []
         );
     }
