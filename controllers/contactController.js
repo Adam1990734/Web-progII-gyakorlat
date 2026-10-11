@@ -11,13 +11,13 @@ const express = require("express");
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.contactIndexGET = (req, res) => res.render("message/create");
+exports.contactIndexGet = (req, res) => res.render("message/create");
 
 /**
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.contactCreateMessagePOST = async (req, res) => {
+exports.contactCreateMessagePost = async (req, res) => {
     const messageservice = new messageService();
     const user = req.session.user === undefined ? null : 
         await User.findById(req.session.user.id);

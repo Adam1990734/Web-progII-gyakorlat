@@ -7,10 +7,10 @@ const express = require("express");
 
 /**
  * 
- * @param {express.Request} req 
+ * @param {express.Request} req
  * @param {express.Response} res
  */
-exports.messageIndex = async (req, res) => {
+exports.messageIndexGet = async (req, res) => {
     const messageservice = new messageService();
 
     const page = req.query.page == undefined || isNaN(Number(req.query.page)) ? 0 : Number(req.query.page);
