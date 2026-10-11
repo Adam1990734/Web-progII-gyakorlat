@@ -2,6 +2,7 @@ const Invention = require("../models/invention/Invention");
 const inventionDto = require("../models/invention/InventionDto");
 const inventionShortDto = require("../models/invention/inventionShortDto");
 const inventionResponseDto = require("../models/invention/InventionResponseDto");
+const { toRespDto } = require("./inventorService");
 
 class inventionService {
     /**
@@ -18,6 +19,14 @@ class inventionService {
                         .limit(size)
                 : await Invention.find();
         return inventions.map(invention => inventionService.toRespDto(invention));
+    }
+    /**
+     * 
+     * @param {String} id 
+     */
+    async findById(id) {
+        const invention = Invention.findById(id);
+        return toRespDto(invention);
     }
     /**
      * 
@@ -60,7 +69,7 @@ class inventionService {
      */
     static toShortDto(invention) {
         return new inventionShortDto(
-            invention._id,
+            invention._id.toString(),
             invention.name
         );
     }
@@ -84,8 +93,7 @@ class inventionService {
      */
     static toSimpDto(invention) {
         return new inventionDto(
-            invention.name,
-            invention.inventors != undefined || invention.inventors != null ? invention.inventors.map(inventor => inventor._id) : []
+            invention.name
         );
     }
 }
