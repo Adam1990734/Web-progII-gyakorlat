@@ -1,7 +1,7 @@
-const Inventor = require("./../models/inventor/Inventor");
-const inventorDto = require("./../models/inventor/inventorDto");
-const inventorShortDto = require("./../models/inventor/inventorShortDto");
-const inventorResponseDto = require("./../models/inventor/inventorResponseDto");
+const Inventor = require("../../models/inventor/Inventor");
+const inventorDto = require("../../models/inventor/inventorDto");
+const inventorShortDto = require("../../models/inventor/inventorShortDto");
+const inventorResponseDto = require("../../models/inventor/inventorResponseDto");
 
 class inventorService {
     /**

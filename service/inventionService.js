@@ -1,7 +1,7 @@
-const Invention = require("./../models/invention/Invention");
-const inventionDto = require("./../models/invention/inventionDto");
-const inventionShortDto = require("./../models/invention/inventionShortDto");
-const inventionResponseDto = require("./../models/invention/inventionResponseDto");
+const Invention = require("../models/invention/Invention");
+const inventionDto = require("../models/invention/InventionDto");
+const inventionShortDto = require("../models/invention/inventionShortDto");
+const inventionResponseDto = require("../models/invention/InventionResponseDto");
 
 class inventionService {
     /**

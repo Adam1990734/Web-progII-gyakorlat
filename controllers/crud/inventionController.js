@@ -2,6 +2,7 @@ const Invention = require("../../models/invention/Invention");
 const inventionDto = require("../../models/invention/InventionDto");
 const inventionRespDto = require("../../models/invention/InventionResponseDto");
 const inventionShortDto = require("../../models/invention/inventionShortDto");
+const inventionService = require("../../service/inventionService");
 
 const express = require("express");
 
@@ -10,8 +11,22 @@ const express = require("express");
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionIndexGet = (req, res) => {
+exports.inventionIndexGet = async (req, res) => {
+    const inventionservice = new inventionService();
 
+    const page = req.query.page == undefined || isNaN(Number(req.query.page)) ? 0 : Number(req.query.page);
+    const len = req.query.len == undefined || isNaN(Number(req.query.page)) ? 25 : Number(req.query.len);
+
+    const inventions = await inventionservice.findAll();
+
+    res.render("invention/index", {
+        inventions: inventions,
+        //Pager elmehez konvenció rész:
+        lastpage: page,
+        len: len,
+        allcount: await Invention.countDocuments(),
+        datalen: inventions.length
+    });
 };
 
 /**
@@ -19,8 +34,8 @@ exports.inventionIndexGet = (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionDetailsGet = (req, res) => {
-
+exports.inventionDetailsGet = async (req, res) => {
+    const inventionservice = new inventionService();
 };
 
 /**
@@ -28,8 +43,8 @@ exports.inventionDetailsGet = (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionCreateGet = (req, res) => {
-
+exports.inventionCreateGet = async (req, res) => {
+    const inventionservice = new inventionService();
 };
 
 /**
@@ -37,8 +52,8 @@ exports.inventionCreateGet = (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionCreatePost = (req, res) => {
-
+exports.inventionCreatePost = async (req, res) => {
+    const inventionservice = new inventionService();
 };
 
 /**
@@ -46,8 +61,8 @@ exports.inventionCreatePost = (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionUpdateGet = (req, res) => {
-
+exports.inventionUpdateGet = async (req, res) => {
+    const inventionservice = new inventionService();
 };
 
 /**
@@ -55,8 +70,8 @@ exports.inventionUpdateGet = (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionUpdatePost = (req, res) => {
-
+exports.inventionUpdatePost = async (req, res) => {
+    const inventionservice = new inventionService();
 };
 
 /**
@@ -64,8 +79,8 @@ exports.inventionUpdatePost = (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionDeleteGet = (req, res) => {
-
+exports.inventionDeleteGet = async (req, res) => {
+    const inventionservice = new inventionService();
 };
 
 /**
@@ -73,6 +88,6 @@ exports.inventionDeleteGet = (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionDeletePost = (req, res) => {
-
+exports.inventionDeletePost = async (req, res) => {
+    const inventionservice = new inventionService();
 };

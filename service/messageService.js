@@ -1,7 +1,7 @@
 const User = require("../models/user/User");
-const Message = require("./../models/message/Message");
-const messageDto = require("./../models/message/messageDto");
-const messageResponseDto = require("./../models/message/messageResponseDto");
+const Message = require("../models/message/Message");
+const messageDto = require("../models/message/messageDto");
+const messageResponseDto = require("../models/message/messageResponseDto");
 
 class messageService {
     /**
