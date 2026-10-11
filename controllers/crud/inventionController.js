@@ -9,10 +9,24 @@ const express = require("express");
 /**
  * 
  * @param {express.Request} req 
+ * @param {express.Response} res 
+ * @param {express.NextFunction} next 
+ */
+exports.inventionServiceInejction = (req, res, next) => {
+    req.inventionService = new inventionService();
+    next();
+}
+
+/**
+ * 
+ * @param {express.Request} req 
  * @param {express.Response} res
  */
 exports.inventionIndexGet = async (req, res) => {
-    const inventionservice = new inventionService();
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
 
     const page = req.query.page == undefined || isNaN(Number(req.query.page)) ? 0 : Number(req.query.page);
     const len = req.query.len == undefined || isNaN(Number(req.query.page)) ? 25 : Number(req.query.len);
@@ -35,7 +49,11 @@ exports.inventionIndexGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventionDetailsGet = async (req, res) => {
-    const inventionservice = new inventionService();
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
+    
 };
 
 /**
@@ -44,7 +62,10 @@ exports.inventionDetailsGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventionCreateGet = async (req, res) => {
-    const inventionservice = new inventionService();
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
 };
 
 /**
@@ -53,7 +74,10 @@ exports.inventionCreateGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventionCreatePost = async (req, res) => {
-    const inventionservice = new inventionService();
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
 };
 
 /**
@@ -62,7 +86,10 @@ exports.inventionCreatePost = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventionUpdateGet = async (req, res) => {
-    const inventionservice = new inventionService();
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
 };
 
 /**
@@ -71,7 +98,10 @@ exports.inventionUpdateGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventionUpdatePost = async (req, res) => {
-    const inventionservice = new inventionService();
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
 };
 
 /**
@@ -80,7 +110,10 @@ exports.inventionUpdatePost = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventionDeleteGet = async (req, res) => {
-    const inventionservice = new inventionService();
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
 };
 
 /**
@@ -89,5 +122,8 @@ exports.inventionDeleteGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventionDeletePost = async (req, res) => {
-    const inventionservice = new inventionService();
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
 };

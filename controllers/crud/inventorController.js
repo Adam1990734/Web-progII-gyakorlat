@@ -9,10 +9,24 @@ const express = require("express");
 /**
  * 
  * @param {express.Request} req 
+ * @param {express.Response} res 
+ * @param {express.NextFunction} next 
+ */
+exports.inventorServiceInejction = (req, res, next) => {
+    req.inventorService = new inventorService();
+    next();
+}
+
+/**
+ * 
+ * @param {express.Request} req 
  * @param {express.Response} res
  */
 exports.inventorIndexGet = async (req, res) => {
-    const inventorservice = new inventorService();
+    /**
+     * @type {inventorService}
+     */
+    const inventorservice = req.inventorService;
 
     const page = req.query.page == undefined || isNaN(Number(req.query.page)) ? 0 : Number(req.query.page);
     const len = req.query.len == undefined || isNaN(Number(req.query.page)) ? 25 : Number(req.query.len);
@@ -35,7 +49,10 @@ exports.inventorIndexGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventorDetailsGet = async (req, res) => {
-    const inventorservice = new inventorService();
+    /**
+     * @type {inventorService}
+     */
+    const inventorservice = req.inventorService;
 
 };
 
@@ -45,7 +62,10 @@ exports.inventorDetailsGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventorCreateGet = async (req, res) => {
-    const inventorservice = new inventorService();
+    /**
+     * @type {inventorService}
+     */
+    const inventorservice = req.inventorService;
 
 };
 
@@ -55,7 +75,10 @@ exports.inventorCreateGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventorCreatePost = async (req, res) => {
-    const inventorservice = new inventorService();
+    /**
+     * @type {inventorService}
+     */
+    const inventorservice = req.inventorService;
 
 };
 
@@ -65,8 +88,10 @@ exports.inventorCreatePost = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventorUpdateGet = async (req, res) => {
-    const inventorservice = new inventorService();
-
+    /**
+     * @type {inventorService}
+     */
+    const inventorservice = req.inventorService;
 };
 
 /**
@@ -75,8 +100,10 @@ exports.inventorUpdateGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventorUpdatePost = async (req, res) => {
-    const inventorservice = new inventorService();
-
+    /**
+     * @type {inventorService}
+     */
+    const inventorservice = req.inventorService;
 };
 
 /**
@@ -85,7 +112,10 @@ exports.inventorUpdatePost = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventorDeleteGet = async (req, res) => {
-    const inventorservice = new inventorService();
+    /**
+     * @type {inventorService}
+     */
+    const inventorservice = req.inventorService;
 
 };
 
@@ -95,6 +125,9 @@ exports.inventorDeleteGet = async (req, res) => {
  * @param {express.Response} res
  */
 exports.inventorDeletePost = async (req, res) => {
-    const inventorservice = new inventorService();
+    /**
+     * @type {inventorService}
+     */
+    const inventorservice = req.inventorService;
 
 };
