@@ -20,16 +20,5 @@
         <% }) %>
     </tbody>
 </table>
-<% if (lastpage + 1 < (allcount / len)) { %>
-    <form method="get">
-        <input hidden type="text" name="page" value="<%= lastpage + 1 %>">
-        <button type="submit">Next</button>
-    </form>
-<% } %>
-<% if (lastpage > 0) { %>
-    <form method="get">
-        <input hidden type="text" name="page" value="<%= lastpage - 1 %>">
-        <button type="submit">Prev</button>
-    </form>
-<% } %>
+<%- include('../partials/pager') %>
 <%- include("../partials/footer") %>

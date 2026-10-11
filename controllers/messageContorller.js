@@ -20,8 +20,10 @@ exports.messageIndex = async (req, res) => {
 
     res.render("message/show", {
         messages: messages,
+        //Pager elmehez konvenció rész:
         lastpage: page,
         len: len,
-        allcount: await Message.countDocuments()
+        allcount: await Message.countDocuments(),
+        datalen: messages.length
     });
 };
