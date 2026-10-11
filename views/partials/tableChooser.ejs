@@ -1,0 +1,10 @@
+<form method="get">
+    <div>
+    <label>Tables</label>
+        <select>
+            <% availableTables.forEach(table => { %>
+                <option value="<%= table %>"></option>
+            <% }) %>
+        </select>
+    </div>
+</form>
