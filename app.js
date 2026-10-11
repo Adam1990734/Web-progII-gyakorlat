@@ -24,11 +24,15 @@ app.use((req, res, next) => {
     next();
 });
 
-//Routerek:
+//Főoldal és User router:
 app.use("/", require("./routes/userRouter"));
+//Üzenetek:
 app.use("/contact", require("./routes/contactRouter"));
 app.use("/message", require("./routes/messageRouter"));
+//Crud:
 app.use("/crud", require("./routes/crudRouter"));
+app.use("/inventions", require("./routes/crud/inventionRouter"));
+app.use("/inventors", require("./routes/crud/inventorRouter"));
 
 const port = 3000;
 app.listen(port, () => {console.log(`Server: http://localhost:${port}`);});
