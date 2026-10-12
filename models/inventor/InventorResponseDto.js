@@ -32,6 +32,6 @@ class InventorResponseDto extends InventorDtoResponseData {
     setName(name) { this._name = name; }
     setBornAt(bornAt) { this._bornAt = bornAt; }
     setDiedAt(diedAt) { this._diedAt = diedAt; }
-    setInventionIds(inventions) { this._inventions = inventions; }
+    setInventions(inventions) { this._inventions = inventions; }
 }
 module.exports = InventorResponseDto;

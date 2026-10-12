@@ -7,7 +7,7 @@ router.get(
     controller.inventionIndexGet
 );
 router.get(
-    "/details",
+    "/details/:id",
     controller.inventionServiceInejction,
     controller.inventionDetailsGet
 );
@@ -25,26 +25,26 @@ router.post(
 );
 
 router.get(
-    "/update/{id}",
+    "/update/:id",
     controller.inventionServiceInejction,
     controller.inventionUpdateGet
 );
 
 router.post(
-    "/update/{id}",
+    "/update/:id",
     controller.inventionServiceInejction,
     controller.inventionDtoInejctionPost,
     controller.inventionUpdatePost
 );
 
 router.get(
-    "/delete",
+    "/delete/:id",
     controller.inventionServiceInejction,
     controller.inventionDeleteGet
 );
 
 router.post(
-    "/delete",
+    "/delete/:id",
     controller.inventionServiceInejction,
     controller.inventionDeletePost
 );

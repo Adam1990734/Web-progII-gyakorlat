@@ -2,7 +2,6 @@ const Invention = require("../models/invention/Invention");
 const inventionDto = require("../models/invention/InventionDto");
 const inventionShortDto = require("../models/invention/inventionShortDto");
 const inventionResponseDto = require("../models/invention/InventionResponseDto");
-const { toRespDto } = require("./inventorService");
 
 class inventionService {
     /**
@@ -17,16 +16,17 @@ class inventionService {
                     await Invention.find()
                         .skip(page*size)
                         .limit(size)
-                : await Invention.find();
-        return inventions.map(invention => inventionService.toRespDto(invention));
+                        .populate("inventors")
+                : await Invention.find().populate("inventions");
+        return inventions.map(invention => this.toRespDto(invention));
     }
     /**
      * 
      * @param {String} id 
      */
     async findById(id) {
-        const invention = Invention.findById(id);
-        return toRespDto(invention);
+        const invention = await Invention.findById(id).populate("inventors");
+        return this.toRespDto(invention);
     }
     /**
      * 
@@ -37,7 +37,7 @@ class inventionService {
         const inventionCreated = await Invention.create({
             name: invention.getName
         });
-        return inventionService.toRespDto(inventionCreated);
+        return this.toRespDto(inventionCreated);
     }
     /**
      * @param {String} id 
@@ -50,7 +50,7 @@ class inventionService {
         {
             name: invention.getName
         });
-        return inventionService.toRespDto(inventionUpdated);
+        return this.toRespDto(inventionUpdated);
     }
     /**
      * 
@@ -67,7 +67,7 @@ class inventionService {
      * @param {Invention} invention 
      * @returns {inventionShortDto}
      */
-    static toShortDto(invention) {
+    toShortDto(invention) {
         return new inventionShortDto(
             invention._id.toString(),
             invention.name
@@ -79,7 +79,7 @@ class inventionService {
      * @param {Invention} invention 
      * @returns {inventionResponseDto}
      */
-    static toRespDto(invention) {
+    toRespDto(invention) {
         return new inventionResponseDto(
             invention._id.toString(),
             invention.name,
@@ -91,7 +91,7 @@ class inventionService {
      * @param {Invention} invention 
      * @returns {inventionDto}
      */
-    static toSimpDto(invention) {
+    toSimpDto(invention) {
         return new inventionDto(
             invention.name
         );

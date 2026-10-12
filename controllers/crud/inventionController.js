@@ -1,7 +1,7 @@
 const Invention = require("../../models/invention/Invention");
-const inventionDto = require("../models/invention/InventionDto");
+const inventionDto = require("../../models/invention/InventionDto");
 const inventionResponseDto = require("../../models/invention/InventionResponseDto");
-const inventionShortDto = require("../models/invention/inventionShortDto");
+const inventionShortDto = require("../../models/invention/inventionShortDto");
 const inventionService = require("../../service/inventionService");
 
 const express = require("express");
@@ -81,7 +81,7 @@ exports.inventionDetailsGet = async (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventionCreateGet = async (req, res) => res.render("/invention/create");
+exports.inventionCreateGet = async (req, res) => res.render("invention/create");
 
 /**
  * 
@@ -139,7 +139,7 @@ exports.inventionUpdatePost = async (req, res) => {
      * @type {inventionDto}
      */
     const dto = req.dto;
-    const newInvention = inventionservice.update(id, dto);
+    const newInvention = await inventionservice.update(id, dto);
 
     res.redirect("/inventions");
 };
@@ -156,7 +156,7 @@ exports.inventionDeleteGet = async (req, res) => {
     const inventionservice = req.inventionService;
 
     const id = req.params.id;
-    const invention = inventionservice.findById(id);
+    const invention = await inventionservice.findById(id);
 
     res.render("invention/delete", {
         "invention": invention

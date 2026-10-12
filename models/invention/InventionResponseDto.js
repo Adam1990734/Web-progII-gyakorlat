@@ -18,7 +18,7 @@ class inventionResponseDto extends inventionResponseDtoData {
 
     getId() { return this._id; }
     getName() { return this._name; }
-    getInventorIds() { return this._inventors; }
+    getInventors() { return this._inventors; }
 
     setId(id) { this._id = id; }
     setName(name) { this._name = name; }

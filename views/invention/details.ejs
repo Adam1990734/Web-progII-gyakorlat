@@ -1,0 +1,24 @@
+<%- include("../partials/header") %>
+    <div>
+        <h2>Invention Details</h2>
+        <div>
+            <div>
+                <span>Name</span>
+                <span><%= invention.getName() %></span>
+            </div>
+            <div>
+                <% if (invention.getInventors().length > 0) { %>
+                 <span>Related Inventors</span>
+                    <ul>
+                        <% invention.getInventors().forEach(inventor => { %>
+                         <li><%= inventor.getName() %></li>
+                        <% }) %>
+                        
+                    </ul>
+                <% } else { %>
+                    <span>There is no related inventor</span>
+                <% } %>
+            </div>
+        </div>
+    </div>
+<%- include("../partials/footer") %>

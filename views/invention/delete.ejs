@@ -1,0 +1,10 @@
+<%- include("../partials/header") %>
+    <form method="post" action="/inventions/delete/<%= invention.getId() %>">
+        <div>
+            <label>Name:</label>
+            <input name="name" value="<%= invention.getName() %>" readonly>
+        </div>
+        <button type="submit">Delete</button>
+    </form>
+    <a href="/inventions">Back</a>
+<%- include("../partials/footer") %>

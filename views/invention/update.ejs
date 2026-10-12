@@ -1,0 +1,10 @@
+<%- include("../partials/header") %>
+    <form method="post" action="/inventions/update/<%= invention.getId() %>">
+        <div>
+            <label>Name:</label>
+            <input name="name" value="<%= invention.getName() %>">
+        </div>
+        <button type="submit">Update</button>
+    </form>
+    <a href="/inventions">Back</a>
+<%- include("../partials/footer") %>

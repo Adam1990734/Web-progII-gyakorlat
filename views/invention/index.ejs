@@ -1,0 +1,25 @@
+<%- include("../partials/header") %>
+    <h1>Inventions</h1>
+    <a href="/inventions/create">Create a new invention!</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Operatios</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% inventions.forEach(invention => { %>
+                <tr>
+                    <td><%= invention.getName() %></td>
+                    <td>
+                        <a href="/inventions/details/<%= invention.getId() %>">Details</a>
+                        <a href="/inventions/update/<%= invention.getId() %>">Edit</a>
+                        <a href="/inventions/delete/<%= invention.getId() %>">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/pager') %>
+<%- include("../partials/footer") %>

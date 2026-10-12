@@ -1,8 +1,7 @@
 const Inventor = require("../models/inventor/Inventor");
-const inventorDto = require("../../models/inventor/inventorDto");
-const inventorShortDto = require("../../models/inventor/inventorShortDto");
-const inventorResponseDto = require("../../models/inventor/inventorResponseDto");
-const { toRespDto } = require("./inventionService");
+const inventorDto = require("../models/inventor/inventorDto");
+const inventorShortDto = require("../models/inventor/inventorShortDto");
+const inventorResponseDto = require("../models/inventor/inventorResponseDto");
 
 class inventorService {
     /**
@@ -17,14 +16,15 @@ class inventorService {
                     await Inventor.find()
                         .skip(page*size)
                         .limit(size)
-                : await Inventor.find();
+                        .populate("inventions")
+                : await Inventor.find().populate("inventions");
         return inventors.map(inventor => inventorService.toRespDto(inventor));
     }
     /**
      * @param {String} id 
      */
     async findById(id) {
-        const inventor = Inventor.findById(id);
+        const inventor = await Inventor.findById(id).populate("inventions");
         return toRespDto(inventor);
     }
     /**
@@ -38,7 +38,7 @@ class inventorService {
             bornAt: inventor.getBornAt,
             diedAt: inventor.getDiedAt
         });
-        return toRespDto(inventorCreated);
+        return inventorService.toRespDto(inventorCreated);
     }
     /**
      * @param {String} id 
