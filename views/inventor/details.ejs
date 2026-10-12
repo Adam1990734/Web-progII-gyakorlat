@@ -1,3 +1,33 @@
 <%- include("../partials/header") %>
-
+    <div>
+        <h2>Inventor Details</h2>
+        <div>
+            <div>
+                <span>Name</span>
+                <span><%= inventor.getName() %></span>
+            </div>
+            <div>
+                <span>Name</span>
+                <span><%= inventor.getBornAt() %></span>
+            </div>
+            <div>
+                <span>Name</span>
+                <span><%= inventor.getDiedAt() %></span>
+            </div>
+            <div>
+                <% if (inventor.getInventions().length > 0) { %>
+                 <span>Related Inventors</span>
+                    <ul>
+                        <% inventor.getInventions().forEach(invention => { %>
+                         <li><%= invention.getName() %></li>
+                        <% }) %>
+                        
+                    </ul>
+                <% } else { %>
+                    <span>There is no related inventions</span>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <a href="/inventors">Back</a>
 <%- include("../partials/footer") %>

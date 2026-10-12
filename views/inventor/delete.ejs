@@ -1,3 +1,18 @@
 <%- include("../partials/header") %>
-
+    <form method="post" action="/inventors/delete/<%= inventor.getId() %>">
+        <div>
+            <label>Name:</label>
+            <input name="name" value="<%= inventor.getName() %>" readonly>
+        </div>
+        <div>
+            <label>Born In:</label>
+            <input name="bornAt" value="<%= inventor.getBornAt() %>" readonly>
+        </div>
+        <div>
+            <label>Died In:</label>
+            <input name="diedAt" value="<%= inventor.getDiedAt() %>" readonly>
+        </div>
+        <button type="submit">Delete</button>
+    </form>
+    <a href="/inventors">Back</a>
 <%- include("../partials/footer") %>

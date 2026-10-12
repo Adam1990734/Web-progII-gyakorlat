@@ -26,8 +26,8 @@ exports.inventorServiceInejction = (req, res, next) => {
 exports.inventorDtoInejctionPost = (req, res, next) => {
     req.dto = new inventorDto(
         req.body.name,
-        req.body.bornat,
-        req.body.diedat,
+        req.body.bornAt,
+        req.body.diedAt,
         req.body.inventors
     );
     next();

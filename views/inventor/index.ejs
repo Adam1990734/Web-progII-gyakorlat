@@ -1,3 +1,27 @@
 <%- include("../partials/header") %>
-
+    <h1>Inventions</h1>
+    <a href="/inventors/create">Create a new inventor!</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Born In</th>
+                <th>Died In</th>
+                <th>Operatios</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% inventors.forEach(inventor => { %>
+                <tr>
+                    <td><%= invention.getName() %></td>
+                    <td>
+                        <a href="/inventors/details/<%= inventor.getId() %>">Details</a>
+                        <a href="/inventors/update/<%= inventor.getId() %>">Edit</a>
+                        <a href="/inventors/delete/<%= inventor.getId() %>">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/pager') %>
 <%- include("../partials/footer") %>

@@ -1,3 +1,19 @@
 <%- include("../partials/header") %>
-
+    <form method="post" action="/inventors/update/<%= inventor.getId() %>">
+        <div>
+            <label>Name:</label>
+            <input name="name">
+        </div>
+        <div>
+            <label>Born In:</label>
+            <input name="bornAt" value="<%= inventor.getBornAt() %>" readonly>
+        </div>
+        <div>
+            <label>Died In:</label>
+            <input name="diedAt" value="<%= inventor.getDiedAt() %>" readonly>
+        </div>
+        <!-- Ide kell a lista menü -->
+        <button type="submit">Update</button>
+    </form>
+    <a href="/inventors">Back</a>
 <%- include("../partials/footer") %>
