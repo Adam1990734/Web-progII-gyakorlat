@@ -49,4 +49,10 @@ router.post(
     controller.inventionDeletePost
 );
 
+router.get(
+    "/suggest",
+    controller.inventionServiceInejction,
+    controller.inventionSuggester
+);
+
 module.exports = router;

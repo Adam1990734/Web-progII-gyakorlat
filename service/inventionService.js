@@ -23,10 +23,29 @@ class inventionService {
     /**
      * 
      * @param {String} id 
+     * @param {boolean} [isMinimal=false] 
      */
-    async findById(id) {
+    async findById(id, isMinimal = false) {
         const invention = await Invention.findById(id).populate("inventors");
+        if(isMinimal)
+            return this.toShortDto(invention);
         return this.toRespDto(invention);
+    }
+    /**
+     * 
+     * @param {String} name 
+     * @param {boolean} [isMinimal=false] 
+     */
+    async findAllNameLike(name, isMinimal = false) {
+        const inventions = await Invention.find({
+            name: {
+                $regex: name,
+                $options: "i"
+            }
+        });
+        if(isMinimal)
+            return inventions.map(invention => this.toShortDto(invention));
+        return inventions.map(invention => this.toRespDto(invention));
     }
     /**
      * 

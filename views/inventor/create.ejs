@@ -12,7 +12,10 @@
             <label>Died In:</label>
             <input name="diedAt" value="<%= inventor.getDiedAt() %>" readonly>
         </div>
-        <!-- Ide kell a lista menü -->
+        <div>
+            <input type="text" id="searcher">
+            <select id="suggester"></select>
+        </div>
         <button type="submit">Create</button>
     </form>
     <a href="/inventors">Back</a>

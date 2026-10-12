@@ -179,3 +179,24 @@ exports.inventionDeletePost = async (req, res) => {
 
     res.redirect("/invention");
 };
+
+//Felajánláshoz:
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res
+ */
+exports.inventionSuggester = async (req, res) => {
+    /**
+     * @type {inventionService}
+     */
+    const inventionservice = req.inventionService;
+
+    const name = req.query.q;
+    if(q == undefined || q.length === 0)
+        res.json({});
+    
+    const inventions = await inventionservice.findAllNameLike(name, true);
+
+    res.json(inventions);
+};
