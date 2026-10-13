@@ -1,7 +1,7 @@
 /**
  * @type {HTMLSelectElement}
  */
-const suggester = document.getElementById("suggesnter");
+const suggester = document.getElementById("suggester");
 
 /**
  * @type {HTMLInputElement}
@@ -15,11 +15,10 @@ const searcher = document.getElementById("searcher");
  */
 function suggestionToHtml(suggestion) {
     const html = `
-    <div class="suggestion"
-         data-id="${suggestion.id}"
-         data-name="${suggestion.name}">
-        Budapest
-    </div>`;
+    <option value="${suggestion._id}">
+        ${suggestion._name}
+    </option>
+    `;
     return html;
 }
 
@@ -32,13 +31,14 @@ function loadIntoSuggester(suggestions) {
 }
 
 if (searcher && suggester) {
-    searcher.addEventListener("change", async (e) => {
+    searcher.addEventListener("input", async (e) => {
         if(searcher.value.length % 5 != 0)
             return;
         /**
-         * @type {{ id: string, name: string }[]}
+         * @type {{ _id: string, _name: string }[]}
          */
-        const suggestions = await fetch(`/inventions?suggest=${searcher.value}`);
+        const suggestions = await fetch(`/inventions/suggest?q=${searcher.value}`).then(r => r.json());
+        console.log(suggestions);
         if(suggestions.length == 0)
             return;
         loadIntoSuggester(suggestions);
@@ -49,7 +49,7 @@ if (searcher && suggester) {
             const id = e.target.dataset.id;
             const name = e.target.dataset.name;
 
-            //itt kell majd beírni az input-ba
+            console.log(`Kivalasztva: ${name}`);
         }
     });
 }

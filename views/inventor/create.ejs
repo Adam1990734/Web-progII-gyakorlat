@@ -6,17 +6,18 @@
         </div>
         <div>
             <label>Born In:</label>
-            <input name="bornAt" value="<%= inventor.getBornAt() %>" readonly>
+            <input name="bornAt">
         </div>
         <div>
             <label>Died In:</label>
-            <input name="diedAt" value="<%= inventor.getDiedAt() %>" readonly>
+            <input name="diedAt">
         </div>
         <div>
             <input type="text" id="searcher">
-            <select id="suggester"></select>
+            <select id="suggester" name="inventions"></select>
         </div>
         <button type="submit">Create</button>
     </form>
     <a href="/inventors">Back</a>
+    <script src="/js/suggestion.js"></script>
 <%- include("../partials/footer") %>

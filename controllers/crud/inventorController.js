@@ -47,7 +47,7 @@ exports.inventorIndexGet = async (req, res) => {
     const page = req.query.page == undefined || isNaN(Number(req.query.page)) ? 0 : Number(req.query.page);
     const len = req.query.len == undefined || isNaN(Number(req.query.page)) ? 25 : Number(req.query.len);
 
-    const inventors = inventorservice.findAll(page, len);
+    const inventors = await inventorservice.findAll(page, len);
 
     res.render("inventor/index", {
         inventors: inventors,
@@ -71,7 +71,7 @@ exports.inventorDetailsGet = async (req, res) => {
     const inventorservice = req.inventorService;
 
     const id = req.params.id;
-    const inventor = inventorservice.findById(id);
+    const inventor = await inventorservice.findById(id);
 
     res.render("inventor/details", {
         "inventor": inventor
@@ -101,7 +101,7 @@ exports.inventorCreatePost = async (req, res) => {
      * @type {inventionDto}
      */
     const dto = req.dto;
-    inventorservice.create(dto);
+    await inventorservice.create(dto);
 
     res.redirect("/inventors");
 };
@@ -177,7 +177,7 @@ exports.inventorDeletePost = async (req, res) => {
     const inventorservice = req.inventorService;
 
     const id = req.params.id;
-    inventorservice.delete(id);
+    await inventorservice.delete(id);
 
     res.redirect("/inventors");
 };

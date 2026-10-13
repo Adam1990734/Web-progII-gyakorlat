@@ -99,7 +99,7 @@ exports.inventionCreatePost = async (req, res) => {
      * @type {inventionDto}
      */
     const dto = req.dto;
-    inventionservice.create(dto);
+    await inventionservice.create(dto);
 
     res.redirect("/inventions");
 };
@@ -175,7 +175,7 @@ exports.inventionDeletePost = async (req, res) => {
     const inventionservice = req.inventionService;
 
     const id = req.params.id;
-    inventionservice.delete(id);
+    await inventionservice.delete(id);
 
     res.redirect("/invention");
 };
@@ -193,8 +193,6 @@ exports.inventionSuggester = async (req, res) => {
     const inventionservice = req.inventionService;
 
     const name = req.query.q;
-    if(q == undefined || q.length === 0)
-        res.json({});
     
     const inventions = await inventionservice.findAllNameLike(name, true);
 

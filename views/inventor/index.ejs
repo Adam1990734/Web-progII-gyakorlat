@@ -13,7 +13,9 @@
         <tbody>
             <% inventors.forEach(inventor => { %>
                 <tr>
-                    <td><%= invention.getName() %></td>
+                    <td><%= inventor.getName() %></td>
+                    <td><%= inventor.getBornAt() %></td>
+                    <td><%= inventor.getDiedAt() %></td>
                     <td>
                         <a href="/inventors/details/<%= inventor.getId() %>">Details</a>
                         <a href="/inventors/update/<%= inventor.getId() %>">Edit</a>

@@ -18,7 +18,7 @@ class inventorService {
                         .limit(size)
                         .populate("inventions")
                 : await Inventor.find().populate("inventions");
-        return inventors.map(inventor => inventorService.toRespDto(inventor));
+        return inventors.map(inventor => this.toRespDto(inventor));
     }
     /**
      * @param {String} id 
@@ -103,7 +103,7 @@ class inventorService {
      * @returns {inventorResponseDto}
      */
     toRespDto(inventor) {
-        return new InventorResponseDto(
+        return new inventorResponseDto(
             inventor._id.toString(),
             inventor.name,
             inventor.BornAt,

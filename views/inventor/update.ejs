@@ -2,15 +2,15 @@
     <form method="post" action="/inventors/update/<%= inventor.getId() %>">
         <div>
             <label>Name:</label>
-            <input name="name">
+            <input name="name" value="<%= inventor.getName() %>">
         </div>
         <div>
             <label>Born In:</label>
-            <input name="bornAt" value="<%= inventor.getBornAt() %>" readonly>
+            <input name="bornAt" value="<%= inventor.getBornAt() %>">
         </div>
         <div>
             <label>Died In:</label>
-            <input name="diedAt" value="<%= inventor.getDiedAt() %>" readonly>
+            <input name="diedAt" value="<%= inventor.getDiedAt() %>">
         </div>
         <!-- Ide kell a lista menü -->
         <button type="submit">Update</button>
