@@ -36,13 +36,13 @@ class inventorService {
      * @param {boolean} [isMinimal=false] 
      * @returns 
      */
-    async findAllNameLike(name, isMinimal = false) {
+    async findAllNameLike(name, isMinimal = false, defaultLimit = 20) {
         const inventors = await Inventor.find({
             name: {
                 $regex: name,
                 $options: "i"
             }
-        });
+        }).limit(defaultLimit);
         if(isMinimal)
             return inventors.map(inventor => this.toShortDto(inventor));
         return inventors.map(inventor => this.toRespDto(inventor));

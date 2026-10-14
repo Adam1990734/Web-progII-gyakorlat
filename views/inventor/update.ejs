@@ -12,7 +12,7 @@
             <label>Died In:</label>
             <input name="diedAt" value="<%= inventor.getDiedAt() %>">
         </div>
-        <!-- Ide kell a lista menü -->
+        <%- include('selecter') %>
         <button type="submit">Update</button>
     </form>
     <a href="/inventors">Back</a>

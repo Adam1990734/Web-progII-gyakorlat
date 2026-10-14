@@ -9,17 +9,46 @@ const suggester = document.getElementById("suggester");
 const searcher = document.getElementById("searcher");
 
 /**
+ * @type {HTMLDivElement}
+ */
+const selected = document.getElementById("selected");
+
+/**
  * 
  * @param {{ id: string, name: string }} suggestion
  * @returns {string}
  */
 function suggestionToHtml(suggestion) {
     const html = `
-    <option value="${suggestion._id}">
+    <option class="suggestion" value="${suggestion._id}">
         ${suggestion._name}
     </option>
     `;
     return html;
+}
+
+function addToSelected(option) {
+    const tag = document.createElement("div");
+
+    const text = document.createElement("span");
+    text.textContent = option.text;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.textContent = "x";
+
+    const hiddenInput = document.createElement("input");
+    hiddenInput.type = "hidden";
+    hiddenInput.name = "inventions";
+    hiddenInput.value = option.value;
+
+    removeBtn.addEventListener("click", () => {
+        suggester.appendChild(option);
+        tag.remove();
+    });
+
+    tag.append(text, removeBtn, hiddenInput);
+    selected.appendChild(tag);
 }
 
 function loadIntoSuggester(suggestions) {
@@ -30,7 +59,7 @@ function loadIntoSuggester(suggestions) {
     });
 }
 
-if (searcher && suggester) {
+if (searcher && suggester && selected) {
     searcher.addEventListener("input", async (e) => {
         if(searcher.value.length % 5 != 0)
             return;
@@ -43,13 +72,9 @@ if (searcher && suggester) {
             return;
         loadIntoSuggester(suggestions);
     });
-    document.addEventListener("click", (e) => {
-        if (e.target.classList.contains("suggestion")) {
-
-            const id = e.target.dataset.id;
-            const name = e.target.dataset.name;
-
-            console.log(`Kivalasztva: ${name}`);
-        }
+    suggester.addEventListener("change", (e) => {
+        const option = e.target.options[e.target.selectedIndex];
+        addToSelected(option);
+        option.remove();
     });
 }

@@ -12,12 +12,8 @@
             <label>Died In:</label>
             <input name="diedAt">
         </div>
-        <div>
-            <input type="text" id="searcher">
-            <select id="suggester" name="inventions"></select>
-        </div>
+        <%- include('selecter') %>
         <button type="submit">Create</button>
     </form>
     <a href="/inventors">Back</a>
-    <script src="/js/suggestion.js"></script>
 <%- include("../partials/footer") %>
