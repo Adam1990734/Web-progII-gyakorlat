@@ -1,7 +1,7 @@
 class inventionResponseDtoData {
-    _id;
-    _name;
-    _inventors;
+    id;
+    name;
+    inventors;
 }
 
 class inventionResponseDto extends inventionResponseDtoData {
@@ -11,17 +11,17 @@ class inventionResponseDto extends inventionResponseDtoData {
         inventors = []
     ) {
         super();
-        this._id = id;
-        this._name = name;
-        this._inventors = inventors;
+        this.id = id;
+        this.name = name;
+        this.inventors = inventors;
     }
 
-    getId() { return this._id; }
-    getName() { return this._name; }
-    getInventors() { return this._inventors; }
+    getId() { return this.id; }
+    getName() { return this.name; }
+    getInventors() { return this.inventors; }
 
     setId(id) { this._id = id; }
     setName(name) { this._name = name; }
-    setInventors(inventors) { this._inventors = inventors; }
+    setInventors(inventors) { this.inventors = inventors; }
 }
 module.exports = inventionResponseDto;

@@ -1,9 +1,9 @@
 class InventorDtoResponseData {
-    _id;
-    _name;
-    _bornAt;
-    _diedAt;
-    _inventions;
+    id;
+    name;
+    bornAt;
+    diedAt;
+    inventions;
 }
 
 class InventorResponseDto extends InventorDtoResponseData {
@@ -15,23 +15,23 @@ class InventorResponseDto extends InventorDtoResponseData {
         inventions = []
     ) {
         super();
-        this._id = id;
-        this._name = name;
-        this._bornAt = bornAt;
-        this._diedAt = diedAt;
-        this._inventions = inventions;
+        this.id = id;
+        this.name = name;
+        this.bornAt = bornAt;
+        this.diedAt = diedAt;
+        this.inventions = inventions;
     }
 
-    getId() { return this._id; }
-    getName() { return this._name; }
-    getBornAt() { return this._bornAt; }
-    getDiedAt() { return this._diedAt; }
-    getInventions() { return this._inventions; }
+    getId() { return this.id; }
+    getName() { return this.name; }
+    getBornAt() { return this.bornAt; }
+    getDiedAt() { return this.diedAt; }
+    getInventions() { return this.inventions; }
 
-    setId(id) { this._id = id; }
-    setName(name) { this._name = name; }
-    setBornAt(bornAt) { this._bornAt = bornAt; }
-    setDiedAt(diedAt) { this._diedAt = diedAt; }
-    setInventions(inventions) { this._inventions = inventions; }
+    setId(id) { this.id = id; }
+    setName(name) { this.name = name; }
+    setBornAt(bornAt) { this.bornAt = bornAt; }
+    setDiedAt(diedAt) { this.diedAt = diedAt; }
+    setInventions(inventions) { this.inventions = inventions; }
 }
 module.exports = InventorResponseDto;

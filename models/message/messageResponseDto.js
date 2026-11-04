@@ -1,10 +1,10 @@
 class messageResponseDtoData {
-    _id;
-    _content;
-    _createdAt;
+    id;
+    content;
+    createdAt;
     //User infók:
-    _userid;
-    _username;
+    userid;
+    username;
 }
 
 class messageResponseDto extends messageResponseDtoData {
@@ -16,22 +16,22 @@ class messageResponseDto extends messageResponseDtoData {
         username = ""
     ) {
         super();
-        this._id = id;
-        this._content = content;
-        this._createdAt = createdAt;
-        this._userid = userid;
-        this._username = username;
+        this.id = id;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.userid = userid;
+        this.username = username;
     }
-    getId() { return this._id; }
-    getContent() { return this._content; }
-    getCreatedAt() { return this._createdAt; }
-    getUserId() { return this._userid; }
-    getUserName() { return this._username; }
+    getId() { return this.id; }
+    getContent() { return this.content; }
+    getCreatedAt() { return this.createdAt; }
+    getUserId() { return this.userid; }
+    getUserName() { return this.username; }
 
-    setId(id = "") { this._id = id; }
-    setContent(content = "") { this._content = content; }
-    setCreatedAt(createdAt = Date.now()) { this._createdAt = createdAt; }
-    setUserId(userid = "") { this._userid = userid; }
-    setUserName(username = "") { this._username = username; }
+    setId(id = "") { this.id = id; }
+    setContent(content = "") { this.content = content; }
+    setCreatedAt(createdAt = Date.now()) { this.createdAt = createdAt; }
+    setUserId(userid = "") { this.userid = userid; }
+    setUserName(username = "") { this.username = username; }
 }
 module.exports = messageResponseDto;

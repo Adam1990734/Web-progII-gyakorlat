@@ -1,6 +1,6 @@
 class inventionShortDtoData {
-    _id;
-    _name;
+    id;
+    name;
 }
 
 class inventionShortDto extends inventionShortDtoData {
@@ -10,13 +10,13 @@ class inventionShortDto extends inventionShortDtoData {
     ) {
         super();
         this._id = id;
-        this._name = name;
+        this.name = name;
     }
 
-    getId() { return this._id; }
-    getName() { return this._name; }
+    getId() { return this.id; }
+    getName() { return this.name; }
 
-    setId(id) { this._id = id; }
-    setName(name) { this._name = name; }
+    setId(id) { this.id = id; }
+    setName(name) { this.name = name; }
 }
 module.exports = inventionShortDto;
