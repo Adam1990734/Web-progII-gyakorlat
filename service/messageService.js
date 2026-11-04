@@ -43,8 +43,8 @@ class messageService {
      */
     async create(user, message) {
         const messageCreated = await Message.create({
-            content: message.getContent,
-            createdAt: message.getCreatedAt,
+            content: message.getContent(),
+            createdAt: message.getCreatedAt(),
             user: user
         });
         user.messages.push(messageCreated);
@@ -60,8 +60,8 @@ class messageService {
         const messageUpdated = await Message.findByIdAndUpdate(
         { _id: id },
         {
-            content: message.getContent,
-            createdAt: message.getCreatedAt
+            content: message.getContent(),
+            createdAt: message.getCreatedAt()
         });
         return messageService.toRespDto(messageUpdated);
     }

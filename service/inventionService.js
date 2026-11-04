@@ -54,7 +54,7 @@ class inventionService {
      */
     async create(invention) {
         const inventionCreated = await Invention.create({
-            name: invention.getName
+            name: invention.getName()
         });
         return this.toRespDto(inventionCreated);
     }
@@ -67,7 +67,7 @@ class inventionService {
         const inventionUpdated = await Invention.findByIdAndUpdate(
         { _id: id },
         {
-            name: invention.getName
+            name: invention.getName()
         });
         return this.toRespDto(inventionUpdated);
     }

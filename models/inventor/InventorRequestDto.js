@@ -22,10 +22,11 @@ class InventorRequestDto extends InventorRequestDtoData {
     getName() { return this.name; }
     getBornAt() { return this.bornAt; }
     getDiedAt() { return this.diedAt; }
+    getInventions() { return this.inventions; }
 
     setName(name) { this.name = name; }
     setBornAt(bornAt) { this.bornAt = bornAt; }
     setDiedAt(diedAt) { this.diedAt = diedAt; }
-    setInventors(inventors) { this.inventions = inventors; }
+    setInventions(inventions) { this.inventions = inventions; }
 }
 module.exports = InventorRequestDto;

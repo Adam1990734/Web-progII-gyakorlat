@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Inventor = require("../models/inventor/Inventor");
 const inventorRequestDto = require("../models/inventor/InventorRequestDto");
 const inventorShortDto = require("../models/inventor/inventorShortDto");
@@ -54,9 +55,10 @@ class inventorService {
      */
     async create(inventor) {
         const inventorCreated = await Inventor.create({
-            name: inventor.getName,
-            bornAt: inventor.getBornAt,
-            diedAt: inventor.getDiedAt
+            name: inventor.getName(),
+            bornAt: inventor.getBornAt(),
+            diedAt: inventor.getDiedAt(),
+            inventions: inventor.getInventions().map(invention => new mongoose.Types.ObjectId(invention.id))
         });
         return this.toRespDto(inventorCreated);
     }
@@ -69,9 +71,10 @@ class inventorService {
         const inventorUpdated = await Inventor.findByIdAndUpdate(
         { _id: id },
         {
-            name: inventor.getName,
-            bornAt: inventor.getBornAt,
-            diedAt: inventor.getDiedAt
+            name: inventor.getName(),
+            bornAt: inventor.getBornAt(),
+            diedAt: inventor.getDiedAt(),
+            inventions: inventor.getInventions().map(invention => new mongoose.Types.ObjectId(invention.id))
         });
         return this.toRespDto(inventorUpdated);
     }

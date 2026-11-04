@@ -101,7 +101,7 @@ exports.inventionCreatePost = async (req, res) => {
     const dto = req.dto;
     await inventionservice.create(dto);
 
-    res.redirect("/inventions");
+    res.redirect("/crud/inventions");
 };
 
 /**
@@ -141,7 +141,7 @@ exports.inventionUpdatePost = async (req, res) => {
     const dto = req.dto;
     const newInvention = await inventionservice.update(id, dto);
 
-    res.redirect("/inventions");
+    res.redirect("/crud/inventions");
 };
 
 /**
@@ -177,7 +177,7 @@ exports.inventionDeletePost = async (req, res) => {
     const id = req.params.id;
     await inventionservice.delete(id);
 
-    res.redirect("/invention");
+    res.redirect("/crud/invention");
 };
 
 //Felajánláshoz:

@@ -28,7 +28,7 @@ exports.inventorDtoInejctionPost =(req, res, next) => {
         req.body.name,
         req.body.bornAt,
         req.body.diedAt,
-        req.body.inventors
+        req.body.inventions
     );
     next();
 }
@@ -103,7 +103,7 @@ exports.inventorCreatePost = async (req, res) => {
     const dto = req.dto;
     await inventorservice.create(dto);
 
-    res.redirect("/inventors");
+    res.redirect("/crud/inventors");
 };
 
 /**
@@ -143,7 +143,7 @@ exports.inventorUpdatePost = async (req, res) => {
     const dto = req.dto;
     const invention = await inventorservice.update(id, dto);
 
-    res.redirect("/inventors");
+    res.redirect("/crud/inventors");
 };
 
 /**
@@ -179,5 +179,5 @@ exports.inventorDeletePost = async (req, res) => {
     const id = req.params.id;
     await inventorservice.delete(id);
 
-    res.redirect("/inventors");
+    res.redirect("/crud/inventors");
 };
