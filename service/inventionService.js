@@ -1,5 +1,5 @@
 const Invention = require("../models/invention/Invention");
-const inventionDto = require("../models/invention/InventionDto");
+const inventionRequestDto = require("../models/invention/InventionRequestDto");
 const inventionShortDto = require("../models/invention/inventionShortDto");
 const inventionResponseDto = require("../models/invention/InventionResponseDto");
 
@@ -36,20 +36,20 @@ class inventionService {
      * @param {String} name 
      * @param {boolean} [isMinimal=false] 
      */
-    async findAllNameLike(name, isMinimal = false, defaultLimit = 20) {
+    async findAllNameLike(name, limit, isMinimal = true) {
         const inventions = await Invention.find({
             name: {
                 $regex: name,
                 $options: "i"
             }
-        }).limit(defaultLimit);
+        }).limit(limit);
         if(isMinimal)
             return inventions.map(invention => this.toShortDto(invention));
         return inventions.map(invention => this.toRespDto(invention));
     }
     /**
      * 
-     * @param {inventionDto} invention
+     * @param {inventionRequestDto} invention
      * @returns {inventionResponseDto}
      */
     async create(invention) {
@@ -60,7 +60,7 @@ class inventionService {
     }
     /**
      * @param {String} id 
-     * @param {inventionDto} invention
+     * @param {inventionRequestDto} invention
      * @returns {inventionResponseDto}
      */
     async update(id, invention) {

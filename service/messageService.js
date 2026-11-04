@@ -1,6 +1,6 @@
 const User = require("../models/user/User");
 const Message = require("../models/message/Message");
-const messageDto = require("../models/message/messageDto");
+const messageRequestDto = require("../models/message/messageRequestDto");
 const messageResponseDto = require("../models/message/messageResponseDto");
 
 class messageService {
@@ -38,7 +38,7 @@ class messageService {
     }
     /**
      * @param {User} user 
-     * @param {messageDto} message
+     * @param {messageRequestDto} message
      * @returns {messageResponseDto}
      */
     async create(user, message) {
@@ -53,7 +53,7 @@ class messageService {
     }
     /**
      * @param {String} id 
-     * @param {messageDto} message
+     * @param {messageRequestDto} message
      * @returns {messageResponseDto}
      */
     async update(id, message) {

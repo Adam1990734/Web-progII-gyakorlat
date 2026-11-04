@@ -1,5 +1,5 @@
 const Inventor = require("../models/inventor/Inventor");
-const inventorDto = require("../models/inventor/InventorDto");
+const inventorRequestDto = require("../models/inventor/InventorRequestDto");
 const inventorShortDto = require("../models/inventor/inventorShortDto");
 const inventorResponseDto = require("../models/inventor/InventorResponseDto");
 
@@ -49,7 +49,7 @@ class inventorService {
     }
     /**
      * 
-     * @param {inventorDto} inventor
+     * @param {inventorRequestDto} inventor
      * @returns {inventorResponseDto}
      */
     async create(inventor) {
@@ -62,7 +62,7 @@ class inventorService {
     }
     /**
      * @param {String} id 
-     * @param {inventorDto} inventor
+     * @param {inventorRequestDto} inventor
      * @returns {inventorResponseDto}
      */
     async update(id, inventor) {
@@ -106,8 +106,8 @@ class inventorService {
         return new inventorResponseDto(
             inventor._id.toString(),
             inventor.name,
-            inventor.BornAt,
-            inventor.DiedAt,
+            inventor.bornAt,
+            inventor.diedAt,
             inventor.inventions != undefined || inventor.inventions != null ? inventor.inventions.map(invention => this.toShortDto(invention)) : []
         );
     }
@@ -119,8 +119,8 @@ class inventorService {
     toSimpDto(inventor) {
         return new inventionDto(
             inventor.name,
-            inventor.BornAt,
-            inventor.DiedAt,
+            inventor.bornAt,
+            inventor.diedAt,
             inventor.inventors != undefined || inventor.inventors != null ? inventor.inventors.map(invention => invention._id) : []
         );
     }
