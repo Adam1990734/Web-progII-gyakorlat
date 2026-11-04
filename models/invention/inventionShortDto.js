@@ -9,7 +9,7 @@ class inventionShortDto extends inventionShortDtoData {
         name = ""
     ) {
         super();
-        this._id = id;
+        this.id = id;
         this.name = name;
     }
 

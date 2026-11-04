@@ -20,7 +20,7 @@ class inventionResponseDto extends inventionResponseDtoData {
     getName() { return this.name; }
     getInventors() { return this.inventors; }
 
-    setId(id) { this._id = id; }
+    setId(id) { this.id = id; }
     setName(name) { this._name = name; }
     setInventors(inventors) { this.inventors = inventors; }
 }
