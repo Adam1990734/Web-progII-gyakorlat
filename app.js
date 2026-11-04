@@ -14,7 +14,10 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({mongoUrl: process.env.SESSION_MONGO_URI, collectionName: "sessions"})
+    store: MongoStore.create({
+        mongoUrl: process.env.SESSION_MONGO_URI,
+        collectionName: "sessions"
+    })
 }));
 
 app.use((req, res, next) => {
@@ -30,9 +33,10 @@ app.use("/", require("./routes/userRouter"));
 app.use("/contact", require("./routes/contactRouter"));
 app.use("/message", require("./routes/messageRouter"));
 //Crud:
-app.use("/crud", require("./routes/crudRouter"));
-app.use("/inventions", require("./routes/crud/inventionRouter"));
-app.use("/inventors", require("./routes/crud/inventorRouter"));
+app.use("/crud/inventions", require("./routes/crud/inventionRouter"));
+app.use("/crud/inventors", require("./routes/crud/inventorRouter"));
 
 const port = 3000;
-app.listen(port, () => {console.log(`Server: http://localhost:${port}`);});
+app.listen(port, () => {
+    console.log(`Server: http://localhost:${port}`);
+});

@@ -1,6 +1,6 @@
 <%- include("../partials/header") %>
     <h1>Inventions</h1>
-    <a href="/inventors/create">Create a new inventor!</a>
+    <a href="/crud/inventors/create">Create a new inventor!</a>
     <table>
         <thead>
             <tr>
@@ -17,9 +17,9 @@
                     <td><%= inventor.getBornAt() %></td>
                     <td><%= inventor.getDiedAt() %></td>
                     <td>
-                        <a href="/inventors/details/<%= inventor.getId() %>">Details</a>
-                        <a href="/inventors/update/<%= inventor.getId() %>">Edit</a>
-                        <a href="/inventors/delete/<%= inventor.getId() %>">Delete</a>
+                        <a href="/crud/inventors/details/<%= inventor.getId() %>">Details</a>
+                        <a href="/crud/inventors/update/<%= inventor.getId() %>">Edit</a>
+                        <a href="/crud/inventors/delete/<%= inventor.getId() %>">Delete</a>
                     </td>
                 </tr>
             <% }) %>

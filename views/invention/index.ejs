@@ -1,6 +1,6 @@
 <%- include("../partials/header") %>
     <h1>Inventions</h1>
-    <a href="/inventions/create">Create a new invention!</a>
+    <a href="/crud/inventions/create">Create a new invention!</a>
     <table>
         <thead>
             <tr>
@@ -13,9 +13,9 @@
                 <tr>
                     <td><%= invention.getName() %></td>
                     <td>
-                        <a href="/inventions/details/<%= invention.getId() %>">Details</a>
-                        <a href="/inventions/update/<%= invention.getId() %>">Edit</a>
-                        <a href="/inventions/delete/<%= invention.getId() %>">Delete</a>
+                        <a href="/crud/inventions/details/<%= invention.getId() %>">Details</a>
+                        <a href="/crud/inventions/update/<%= invention.getId() %>">Edit</a>
+                        <a href="/crud/inventions/delete/<%= invention.getId() %>">Delete</a>
                     </td>
                 </tr>
             <% }) %>

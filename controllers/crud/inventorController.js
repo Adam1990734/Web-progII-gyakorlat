@@ -1,5 +1,5 @@
 const Inventor = require("../../models/inventor/Inventor");
-const inventorDto = require("../../models/inventor/InventorDto");
+const inventorRequestDto = require("../../models/inventor/InventorRequestDto");
 const inventorResponseDto = require("../../models/inventor/InventorResponseDto");
 const inventorShortDto = require("../../models/inventor/inventorShortDto");
 const inventorService = require("../../service/inventorService");
@@ -23,8 +23,8 @@ exports.inventorServiceInejction = (req, res, next) => {
  * @param {express.Response} res 
  * @param {express.NextFunction} next 
  */
-exports.inventorDtoInejctionPost = (req, res, next) => {
-    req.dto = new inventorDto(
+exports.inventorDtoInejctionPost =(req, res, next) => {
+    req.dto = new inventorRequestDto(
         req.body.name,
         req.body.bornAt,
         req.body.diedAt,
@@ -98,7 +98,7 @@ exports.inventorCreatePost = async (req, res) => {
 
     //Itt kell a middleware ami "beinjektál"
     /**
-     * @type {inventionDto}
+     * @type {inventorRequestDto}
      */
     const dto = req.dto;
     await inventorservice.create(dto);
@@ -138,7 +138,7 @@ exports.inventorUpdatePost = async (req, res) => {
 
     const id = req.params.id;
     /**
-     * @type {inventionDto}
+     * @type {inventorRequestDto}
      */
     const dto = req.dto;
     const invention = await inventorservice.update(id, dto);

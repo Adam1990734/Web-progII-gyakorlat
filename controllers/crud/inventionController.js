@@ -1,5 +1,5 @@
 const Invention = require("../../models/invention/Invention");
-const inventionDto = require("../../models/invention/InventionDto");
+const inventionRequestDto = require("../../models/invention/InventionResponseDto");
 const inventionResponseDto = require("../../models/invention/InventionResponseDto");
 const inventionShortDto = require("../../models/invention/inventionShortDto");
 const inventionService = require("../../service/inventionService");
@@ -23,8 +23,8 @@ exports.inventionServiceInejction = (req, res, next) => {
  * @param {express.Response} res 
  * @param {express.NextFunction} next 
  */
-exports.inventionDtoInejctionPost = (req, res, next) => {
-    req.dto = new inventionDto(
+exports.inventionDtoInejctionPost =(req, res, next) => {
+    req.dto = new inventionRequestDto(
         req.body.name,
         req.body.inventors
     );
@@ -96,7 +96,7 @@ exports.inventionCreatePost = async (req, res) => {
 
     //Itt kell a middleware ami "beinjektál"
     /**
-     * @type {inventionDto}
+     * @type {inventionRequestDto}
      */
     const dto = req.dto;
     await inventionservice.create(dto);
@@ -136,7 +136,7 @@ exports.inventionUpdatePost = async (req, res) => {
 
     const id = req.params.id;
     /**
-     * @type {inventionDto}
+     * @type {inventionRequestDto}
      */
     const dto = req.dto;
     const newInvention = await inventionservice.update(id, dto);
@@ -192,9 +192,9 @@ exports.inventionSuggester = async (req, res) => {
      */
     const inventionservice = req.inventionService;
 
-    const name = req.query.q;
+    const name = req.query.name ? req.query.name : "";
     
-    const inventions = await inventionservice.findAllNameLike(name, true);
+    const inventions = await inventionservice.findAllNameLike(name, 10);
 
     res.json(inventions);
 };
