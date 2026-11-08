@@ -2,6 +2,11 @@
     <input type="text" id="searcher"/>
 	<div id="suggestions"></div>
 	<h4>Selected inventions</h4>
+	<% if (isUpdate) { %>
+		<script>
+			let selectedInventions = <%- JSON.stringify(inventor.getInventions()) %>;
+		</script>
+	<% } %>
 	<div id="selected-inventions"></div>
 </div>
 <script src="/js/inventionSelector.js"></script>

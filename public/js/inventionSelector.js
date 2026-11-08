@@ -3,7 +3,9 @@ const suggestions = document.getElementById("suggestions");
 const selectedContainer = document.getElementById("selected-inventions");
 
 let timeout;
-let selectedInventions = [];
+
+if(selectedInventions && selectedInventions.length !== 0)
+    renderSelected()
 
 searcher.addEventListener("input", (e) => {
     const query = e.target.value;

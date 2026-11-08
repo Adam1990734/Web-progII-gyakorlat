@@ -83,7 +83,9 @@ exports.inventorDetailsGet = async (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.inventorCreateGet = async (req, res) => res.render("inventor/create");
+exports.inventorCreateGet = async (req, res) => res.render("inventor/create", {
+    "isUpdate": false
+});
 
 /**
  * 
@@ -121,6 +123,7 @@ exports.inventorUpdateGet = async (req, res) => {
     const inventor = await inventorservice.findById(id);
 
     res.render("inventor/update", {
+        "isUpdate": true,
         "inventor": inventor
     });
 };

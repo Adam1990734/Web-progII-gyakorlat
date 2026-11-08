@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Inventor = require("../models/inventor/Inventor");
+const Invention = require("../models/invention/Invention");
 const inventorRequestDto = require("../models/inventor/InventorRequestDto");
 const inventorShortDto = require("../models/inventor/inventorShortDto");
 const inventorResponseDto = require("../models/inventor/InventorResponseDto");
@@ -58,8 +59,21 @@ class inventorService {
             name: inventor.getName(),
             bornAt: inventor.getBornAt(),
             diedAt: inventor.getDiedAt(),
-            inventions: inventor.getInventions().map(invention => new mongoose.Types.ObjectId(invention.id))
+            inventions: inventor.getInventions().map(id => new mongoose.Types.ObjectId(id))
         });
+
+        await Invention.updateMany({
+                _id: {
+                    $in: inventorCreated.inventions
+                }
+            },
+            {
+                $addToSet: {
+                    inventors: inventorCreated._id
+                }
+            }
+        );
+            
         return this.toRespDto(inventorCreated);
     }
     /**
@@ -68,14 +82,58 @@ class inventorService {
      * @returns {inventorResponseDto}
      */
     async update(id, inventor) {
+        const oldInventor = await Inventor.findById(id);
+
+        const newInventionIds = inventor.getInventions();
+
+        const oldIds = oldInventor.inventions.map(id => id.toString());
+
+        // Újak
+        const addedIds = newInventionIds.filter(
+            id => !oldIds.includes(id)
+        );
+
+        // Töröltek
+        const removedIds = oldIds.filter(
+            id => !newInventionIds.includes(id)
+        );
+
         const inventorUpdated = await Inventor.findByIdAndUpdate(
-        { _id: id },
-        {
-            name: inventor.getName(),
-            bornAt: inventor.getBornAt(),
-            diedAt: inventor.getDiedAt(),
-            inventions: inventor.getInventions().map(invention => new mongoose.Types.ObjectId(invention.id))
-        });
+            id,
+            {
+                name: inventor.getName(),
+                bornAt: inventor.getBornAt(),
+                diedAt: inventor.getDiedAt(),
+                inventions: newInventionIds
+            },
+            {
+                new: true
+            }
+        );
+
+        //Hozzáadás
+        if (addedIds.length > 0) {
+            await Invention.updateMany(
+                { _id: { $in: addedIds } },
+                {
+                    $addToSet: {
+                        inventors: inventorUpdated._id
+                    }
+                }
+            );
+        }
+
+        //Törlés
+        if (removedIds.length > 0) {
+            await Invention.updateMany(
+                { _id: { $in: removedIds } },
+                {
+                    $pull: {
+                        inventors: inventorUpdated._id
+                    }
+                }
+            );
+        }
         return this.toRespDto(inventorUpdated);
     }
     /**
