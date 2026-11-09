@@ -10,6 +10,7 @@ class TimeLineDto extends TimeLineDtoData {
         bornAt = 0,
         diedAt = 0
     ) {
+        super();
         this.name = name;
         this.bornAt = bornAt;
         this.diedAt = diedAt;
@@ -23,3 +24,5 @@ class TimeLineDto extends TimeLineDtoData {
     setBornAt(bornAt) { this.bornAt = bornAt; }
     setDiedAt(diedAt) { this.diedAt = diedAt; }
 }
+
+module.exports = TimeLineDto;

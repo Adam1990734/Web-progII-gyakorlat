@@ -8,6 +8,7 @@ class withCountDto extends withCountDtoData {
         name = "",
         count = 0
     ) {
+        super();
         this.name = name;
         this.count = count;
     }
