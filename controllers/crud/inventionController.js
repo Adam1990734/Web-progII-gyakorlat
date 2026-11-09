@@ -2,7 +2,7 @@ const Invention = require("../../models/invention/Invention");
 const inventionRequestDto = require("../../models/invention/InventionResponseDto");
 const inventionResponseDto = require("../../models/invention/InventionResponseDto");
 const inventionShortDto = require("../../models/invention/inventionShortDto");
-const inventionService = require("../../service/inventionService");
+const inventionService = require("../../services/inventionService");
 
 const express = require("express");
 

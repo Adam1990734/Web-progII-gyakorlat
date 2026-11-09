@@ -1,7 +1,7 @@
 const Message = require("../models/message/Message");//POCO
 const messageRequestDto = require("../models/message/messageRequestDto");//Fogadott
 const messageResponseDto = require("../models/message/messageResponseDto");//Küldendő
-const messageService = require("../service/messageService");//Kezelő
+const messageService = require("../services/messageService");//Kezelő
 
 const express = require("express");
 

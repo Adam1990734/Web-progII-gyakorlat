@@ -2,7 +2,7 @@ const Inventor = require("../../models/inventor/Inventor");
 const inventorRequestDto = require("../../models/inventor/InventorRequestDto");
 const inventorResponseDto = require("../../models/inventor/InventorResponseDto");
 const inventorShortDto = require("../../models/inventor/inventorShortDto");
-const inventorService = require("../../service/inventorService");
+const inventorService = require("../../services/inventorService");
 
 const express = require("express");
 

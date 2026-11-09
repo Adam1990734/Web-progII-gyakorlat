@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
-const Invention = require("./../../models/invention/Invention");
+const Invention = require("../../models/invention/Invention");
 
 class inventionSeederData {
     _inventionContainer = new Map();

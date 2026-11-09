@@ -1,6 +1,6 @@
 const express = require("express");
-const inventorService = require("../service/inventorService");
-const inventionService = require("../service/inventionService");
+const inventorService = require("../services/inventorService");
+const inventionService = require("../services/inventionService");
 const Inventor = require("../models/inventor/Inventor");
 const Invention = require("../models/invention/Invention");
 

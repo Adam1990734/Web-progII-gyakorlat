@@ -1,6 +1,6 @@
 const timelineDto = require("../models/diagram/TimelineDto");
 const withCountDto = require("../models/diagram/WithCountDto");
-const diagramService = require("../service/diagramService");
+const diagramService = require("../services/diagramService");
 
 const express = require("express");
 

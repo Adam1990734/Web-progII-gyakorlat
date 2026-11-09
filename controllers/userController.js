@@ -21,7 +21,7 @@ exports.registerPost = async (req, res) => {
     });
     defaultRole.users.push(user);
     defaultRole.save();
-    req.session.message = "Successful registration! You can log in.";
+    req.session.message = "Successful registration!";
     res.redirect("/login");
 };
 

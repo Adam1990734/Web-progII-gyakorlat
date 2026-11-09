@@ -1,9 +1,9 @@
 const express = require("express");
 
-const inventionService = require("../service/inventionService");
-const inventorService = require("../service/inventorService");
-const messageService = require("../service/messageService");
-const diagramService = require("../service/diagramService");
+const inventionService = require("../services/inventionService");
+const inventorService = require("../services/inventorService");
+const messageService = require("../services/messageService");
+const diagramService = require("../services/diagramService");
 
 /**
  * 
