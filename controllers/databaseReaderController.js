@@ -1,6 +1,8 @@
 const express = require("express");
 const inventorService = require("../service/inventorService");
 const inventionService = require("../service/inventionService");
+const Inventor = require("../models/inventor/Inventor");
+const Invention = require("../models/invention/Invention");
 
 /**
  * 
@@ -33,7 +35,7 @@ exports.databaseReaderInventorGet = async (req, res) => {
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.databaseReaderInventionGet = async (rey, res) => {
+exports.databaseReaderInventionGet = async (req, res) => {
     /**
      * @type {inventionService}
      */

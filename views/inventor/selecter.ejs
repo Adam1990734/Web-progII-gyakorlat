@@ -6,6 +6,10 @@
 		<script>
 			let selectedInventions = <%- JSON.stringify(inventor.getInventions()) %>;
 		</script>
+	<% } else { %>
+		<script>
+			let selectedInventions = [];
+		</script>
 	<% } %>
 	<div id="selected-inventions"></div>
 </div>
