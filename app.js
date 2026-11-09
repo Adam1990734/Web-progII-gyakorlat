@@ -27,14 +27,28 @@ app.use((req, res, next) => {
     next();
 });
 
+
+const loginProvider = require("./providers/loginProvider");
 //Főoldal és User router:
 app.use("/", require("./routes/userRouter"));
 //Üzenetek:
 app.use("/contact", require("./routes/contactRouter"));
-app.use("/messages", require("./routes/messageRouter"));
+app.use(
+    "/messages",
+    loginProvider.LoggedInPrivilege,
+    require("./routes/messageRouter")
+);
 //Crud:
-app.use("/crud/inventions", require("./routes/crud/inventionRouter"));
-app.use("/crud/inventors", require("./routes/crud/inventorRouter"));
+app.use(
+    "/crud/inventions",
+    loginProvider.AdminPrivilege,
+    require("./routes/crud/inventionRouter")
+);
+app.use(
+    "/crud/inventors",
+    loginProvider.AdminPrivilege,
+    require("./routes/crud/inventorRouter")
+);
 //Csak olvasható Db:
 app.use("/show", require("./routes/databaseReader"));
 //Diagramok:

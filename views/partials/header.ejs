@@ -5,10 +5,41 @@
     </head>
     <body>
         <nav>
-            <a href="/">Home</a>
-            <% if(user){ %><a href="/user">User</a> <% } %>
-            <% if(user && user.role=="admin"){ %><a href="/admin">Admin</a> <% } %>
-            <% if(!user){ %><a href="/login">Login</a> <a href="/register">Register</a> <% }else{ %>
-            <%= user.username %> <a href="/logout">Logout</a> <% } %>
+            <div>
+                <a href="/">Home</a>
+            </div>
+            <!-- Üzenet küldés -->
+            <div>
+                <a href="/contact">Contact</a>
+            </div>
+            <!-- Diagram menü -->
+            <div>
+                <a href="/diagrams/withcount">WithCount</a>
+                <a href="/diagrams/timeline">Timeline</a>
+            </div>
+            <!-- Üzenetek -->
+            <% if(user){ %>
+                <div>
+                    <a href="/messages">Messages</a>
+                </div>
+            <% } %>
+            <!-- CRUD -->
+            <% if(user && user.role=="ADMIN"){ %>
+                <div>
+                    <a href="/crud/inventions">Inventions</a>
+                    <a href="/crud/inventors">Inventors</a>
+                </div>
+            <% } %>
+            <% if(!user){ %>
+                <div>
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                </div>
+            <% }else{ %>
+                <div>
+                    <span><%= user.username %></span>
+                    <a href="/logout">Logout</a>
+                </div>
+            <% } %>
         </nav>
         <hr>

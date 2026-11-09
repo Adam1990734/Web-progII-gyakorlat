@@ -1,14 +1,6 @@
 const router = require("express").Router();
 const controller = require("../controllers/userController");
-
-isLoggedIn = (req,res,next) => {
-    if(req.session.user) { return next(); }
-    res.redirect("/login");
-}
-isAdmin = (req,res,next) => {
-    if(req.session.user && req.session.user.role.name === "admin") { return next(); }
-    res.redirect("/");
-}
+const loginProvider = require("../providers/loginProvider");
 
 router.get("/", controller.homeIndex);
 router.get("/register", controller.registerGet);
@@ -16,6 +8,8 @@ router.post("/register", controller.registerPost);
 router.get("/login", controller.loginGet);
 router.post("/login", controller.loginPost);
 router.get("/logout", controller.logout);
-router.get("/user", isLoggedIn, controller.userIndex);
-router.get("/admin", isAdmin, controller.adminIndex);
+
+router.get("/user", loginProvider.LoggedInPrivilege, controller.userIndex);
+router.get("/admin", loginProvider.AdminPrivilege, controller.adminIndex);
+
 module.exports = router;
