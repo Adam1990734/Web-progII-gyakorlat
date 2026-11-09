@@ -1,0 +1,23 @@
+<%- include("../partials/header") %>
+    <h1>Inventions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Born In</th>
+                <th>Died In</th>
+                <th>Operatios</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% inventors.forEach(inventor => { %>
+                <tr>
+                    <td><%= inventor.getName() %></td>
+                    <td><%= inventor.getBornAt() %></td>
+                    <td><%= inventor.getDiedAt() %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <%- include('../partials/pager') %>
+<%- include("../partials/footer") %>
