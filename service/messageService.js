@@ -3,6 +3,15 @@ const Message = require("../models/message/Message");
 const messageRequestDto = require("../models/message/messageRequestDto");
 const messageResponseDto = require("../models/message/messageResponseDto");
 
+/**
+ * 
+ * @param {Date} date 
+ * @returns 
+ */
+function formatDate(date) {
+    return date.toLocaleString("hu-HU");
+}
+
 class messageService {
     /**
      * 
@@ -17,7 +26,7 @@ class messageService {
                         .skip(page*size)
                         .limit(size)
                 : await Message.find();
-        return messages.map(message => messageService.toDto(message));
+        return messages.map(message => this.toRespDto(message));
     }
     /**
      * 
@@ -34,7 +43,7 @@ class messageService {
                         .skip(page*size)
                         .limit(size)
                 : await Message.find().populate("user");
-        return messages.map(message => messageService.toRespDto(message));
+        return messages.map(message => this.toRespDto(message));
     }
     /**
      * @param {User} user 
@@ -47,23 +56,11 @@ class messageService {
             createdAt: message.getCreatedAt(),
             user: user
         });
-        user.messages.push(messageCreated);
-        user.save();
-        return messageService.toRespDto(messageCreated);
-    }
-    /**
-     * @param {String} id 
-     * @param {messageRequestDto} message
-     * @returns {messageResponseDto}
-     */
-    async update(id, message) {
-        const messageUpdated = await Message.findByIdAndUpdate(
-        { _id: id },
-        {
-            content: message.getContent(),
-            createdAt: message.getCreatedAt()
-        });
-        return messageService.toRespDto(messageUpdated);
+        if(user) {
+            user.messages.push(messageCreated);
+            user.save();
+        }
+        return this.toRespDto(messageCreated);
     }
     /**
      * 
@@ -80,19 +77,19 @@ class messageService {
      * @param {Message} message 
      * @returns {messageResponseDto}
      */
-    static toRespDto(message) {
+    toRespDto(message) {
         if(message.user == undefined || message.user == null)
             return new messageResponseDto(
                 message._id.toString(),
                 message.content,
-                message.createdAt,
+                formatDate(message.createdAt),
                 "",
                 "Anonymouse"
             );
         return new messageResponseDto(
             message._id.toString(),
             message.content,
-            message.createdAt,
+            formatDate(message.createdAt),
             message.user._id.toString(),
             message.user.username
         );
@@ -102,7 +99,7 @@ class messageService {
      * @param {Message} message
      * @returns {messageResponseDto} 
      */
-    static toSimpDto(message) {
+    toSimpDto(message) {
         return new messageDto(
             message.content,
             message.createdAt

@@ -38,7 +38,7 @@ class inventorSeeder extends inventorSeederData {
                 inventor = await Inventor.create({
                     name: splitted[1],
                     bornAt: Number(splitted[2]),
-                    diedAt: -1,
+                    diedAt: null,
                     inventions: []
                 });
             if(inventor !== null)

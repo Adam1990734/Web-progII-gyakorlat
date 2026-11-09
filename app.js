@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 app.use("/", require("./routes/userRouter"));
 //Üzenetek:
 app.use("/contact", require("./routes/contactRouter"));
-app.use("/message", require("./routes/messageRouter"));
+app.use("/messages", require("./routes/messageRouter"));
 //Crud:
 app.use("/crud/inventions", require("./routes/crud/inventionRouter"));
 app.use("/crud/inventors", require("./routes/crud/inventorRouter"));

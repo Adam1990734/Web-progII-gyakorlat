@@ -11,7 +11,7 @@ class messageResponseDto extends messageResponseDtoData {
     constructor(
         id = "",
         content = "",
-        createdAt = Date.now(),
+        createdAt = "",
         userid = "",
         username = ""
     ) {
@@ -28,10 +28,10 @@ class messageResponseDto extends messageResponseDtoData {
     getUserId() { return this.userid; }
     getUserName() { return this.username; }
 
-    setId(id = "") { this.id = id; }
-    setContent(content = "") { this.content = content; }
-    setCreatedAt(createdAt = Date.now()) { this.createdAt = createdAt; }
-    setUserId(userid = "") { this.userid = userid; }
-    setUserName(username = "") { this.username = username; }
+    setId(id) { this.id = id; }
+    setContent(content) { this.content = content; }
+    setCreatedAt(createdAt) { this.createdAt = createdAt; }
+    setUserId(userid) { this.userid = userid; }
+    setUserName(username) { this.username = username; }
 }
 module.exports = messageResponseDto;

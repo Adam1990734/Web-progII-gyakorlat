@@ -1,14 +1,16 @@
 const router = require("express").Router();
 const controller = require("../../controllers/crud/inventionController");
+const serviceProvider = require("../../providers/serviceProvider");
+const dtoProvider = require("../../providers/dtoProvider");
 
 router.get(
     "/",
-    controller.inventionServiceInejction,
+    serviceProvider.inventionServiceInejction,
     controller.inventionIndexGet
 );
 router.get(
     "/details/:id",
-    controller.inventionServiceInejction,
+    serviceProvider.inventionServiceInejction,
     controller.inventionDetailsGet
 );
 
@@ -19,39 +21,39 @@ router.get(
 
 router.post(
     "/create",
-    controller.inventionServiceInejction,
-    controller.inventionDtoInejctionPost,
+    serviceProvider.inventionServiceInejction,
+    dtoProvider.inventionDtoInejctionPost,
     controller.inventionCreatePost
 );
 
 router.get(
     "/update/:id",
-    controller.inventionServiceInejction,
+    serviceProvider.inventionServiceInejction,
     controller.inventionUpdateGet
 );
 
 router.post(
     "/update/:id",
-    controller.inventionServiceInejction,
-    controller.inventionDtoInejctionPost,
+    serviceProvider.inventionServiceInejction,
+    dtoProvider.inventionDtoInejctionPost,
     controller.inventionUpdatePost
 );
 
 router.get(
     "/delete/:id",
-    controller.inventionServiceInejction,
+    serviceProvider.inventionServiceInejction,
     controller.inventionDeleteGet
 );
 
 router.post(
     "/delete/:id",
-    controller.inventionServiceInejction,
+    serviceProvider.inventionServiceInejction,
     controller.inventionDeletePost
 );
 
 router.get(
     "/suggest",
-    controller.inventionServiceInejction,
+    serviceProvider.inventionServiceInejction,
     controller.inventionSuggester
 );
 

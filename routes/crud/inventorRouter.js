@@ -1,14 +1,16 @@
 const router = require("express").Router();
 const controller = require("../../controllers/crud/inventorController");
+const serviceProvider = require("../../providers/serviceProvider");
+const dtoProvider = require("../../providers/dtoProvider");
 
 router.get(
     "/",
-    controller.inventorServiceInejction,
+    serviceProvider.inventorServiceInejction,
     controller.inventorIndexGet
 );
 router.get(
     "/details/:id",
-    controller.inventorServiceInejction,
+    serviceProvider.inventorServiceInejction,
     controller.inventorDetailsGet
 );
 
@@ -19,33 +21,33 @@ router.get(
 
 router.post(
     "/create",
-    controller.inventorServiceInejction,
-    controller.inventorDtoInejctionPost,
+    serviceProvider.inventorServiceInejction,
+    dtoProvider.inventorDtoInejctionPost,
     controller.inventorCreatePost
 );
 
 router.get(
     "/update/:id",
-    controller.inventorServiceInejction,
+    serviceProvider.inventorServiceInejction,
     controller.inventorUpdateGet
 );
 
 router.post(
     "/update/:id",
-    controller.inventorServiceInejction,
-    controller.inventorDtoInejctionPost,
+    serviceProvider.inventorServiceInejction,
+    dtoProvider.inventorDtoInejctionPost,
     controller.inventorUpdatePost
 );
 
 router.get(
     "/delete/:id",
-    controller.inventorServiceInejction,
+    serviceProvider.inventorServiceInejction,
     controller.inventorDeleteGet
 );
 
 router.post(
     "/delete/:id",
-    controller.inventorServiceInejction,
+    serviceProvider.inventorServiceInejction,
     controller.inventorDeletePost
 );
 

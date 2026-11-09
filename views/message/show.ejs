@@ -13,9 +13,9 @@
     <tbody>
         <% messages.forEach(element => { %>
             <tr>
-                <td><%= element.getUserName %></td>
-                <td><%= element.getCreatedAt %></td>
-                <td><%= element.getContent %></td>
+                <td><%= element.getUserName() %></td>
+                <td><%= element.getCreatedAt() %></td>
+                <td><%= element.getContent() %></td>
             </tr>
         <% }) %>
     </tbody>

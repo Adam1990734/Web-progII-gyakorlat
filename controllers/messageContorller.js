@@ -11,7 +11,10 @@ const express = require("express");
  * @param {express.Response} res
  */
 exports.messageIndexGet = async (req, res) => {
-    const messageservice = new messageService();
+    /**
+     * @type {messageService}
+     */
+    const messageservice = req.messageService;
 
     const page = req.query.page == undefined || isNaN(Number(req.query.page)) ? 0 : Number(req.query.page);
     const len = req.query.len == undefined || isNaN(Number(req.query.page)) ? 25 : Number(req.query.len);

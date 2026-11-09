@@ -9,7 +9,7 @@ class InventorRequestDto extends InventorRequestDtoData {
     constructor(
         name = "",
         bornAt = 0,
-        diedAt = 0,
+        diedAt = null,
         inventions = []
     ) {
         super();

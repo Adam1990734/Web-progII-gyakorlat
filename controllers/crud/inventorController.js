@@ -9,33 +9,6 @@ const express = require("express");
 /**
  * 
  * @param {express.Request} req 
- * @param {express.Response} res 
- * @param {express.NextFunction} next 
- */
-exports.inventorServiceInejction = (req, res, next) => {
-    req.inventorService = new inventorService();
-    next();
-}
-
-/**
- * 
- * @param {express.Request} req 
- * @param {express.Response} res 
- * @param {express.NextFunction} next 
- */
-exports.inventorDtoInejctionPost =(req, res, next) => {
-    req.dto = new inventorRequestDto(
-        req.body.name,
-        req.body.bornAt,
-        req.body.diedAt,
-        req.body.inventions
-    );
-    next();
-}
-
-/**
- * 
- * @param {express.Request} req 
  * @param {express.Response} res
  */
 exports.inventorIndexGet = async (req, res) => {

@@ -1,6 +1,11 @@
 const router = require("express").Router();
 const controller = require("../controllers/messageContorller");
+const serviceProvider = require("../providers/serviceProvider");
 
-router.get("/", controller.messageIndexGet);
+router.get(
+    "/",
+    serviceProvider.messageServiceInejction,
+    controller.messageIndexGet
+);
 
 module.exports = router;

@@ -9,14 +9,14 @@ class messageRequestDto extends messageRequestDtoData {
         createdAt = Date.now()
     ) {
         super();
-        this._content = content;
-        this._createdAt = createdAt;
+        this.content = content;
+        this.createdAt = createdAt;
     }
     
     getContent() { return this.content; }
     getCreatedAt() { return this.createdAt; }
 
-    setContent(content = "") { this.content = content; }
-    setCreatedAt(createdAt = Date.now()) { this.createdAt = createdAt; }
+    setContent(content) { this.content = content; }
+    setCreatedAt(createdAt) { this.createdAt = createdAt; }
 }
 module.exports = messageRequestDto;

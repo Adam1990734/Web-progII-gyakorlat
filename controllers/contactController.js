@@ -18,15 +18,23 @@ exports.contactIndexGet = (req, res) => res.render("message/create");
  * @param {express.Response} res
  */
 exports.contactCreateMessagePost = async (req, res) => {
-    const messageservice = new messageService();
-    const user = req.session.user === undefined ? null : 
+    /**
+     * @type {messageService}
+     */
+    const messageservice = req.messageService;
+
+    const user = req.session.user === undefined ? 
+        null : 
         await User.findById(req.session.user.id);
+
+    /**
+     * @type {messageRequestDto}
+     */
+    const dto = req.dto;
+
     await messageservice.create(
         user,
-        new messageRequestDto(
-            req.body.content,
-            Date.now()
-        )
+        dto
     );
     res.redirect("/contact");
 };
