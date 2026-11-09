@@ -37,6 +37,9 @@ app.use("/crud/inventions", require("./routes/crud/inventionRouter"));
 app.use("/crud/inventors", require("./routes/crud/inventorRouter"));
 //Csak olvasható Db:
 app.use("/show", require("./routes/databaseReader"));
+//Diagramok:
+app.use("/api/diagrams", require("./routes/diagram/diagramApiRouter"));
+app.use("/diagrams", require("./routes/diagram/diagramRouter"));
 
 const port = 3000;
 app.listen(port, () => {
