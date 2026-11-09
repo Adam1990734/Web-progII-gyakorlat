@@ -54,3 +54,5 @@ class diagramService {
         );
     }
 }
+
+module.exports = diagramService;
