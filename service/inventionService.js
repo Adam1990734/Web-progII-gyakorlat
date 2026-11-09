@@ -108,10 +108,10 @@ class inventionService {
     /**
      * 
      * @param {Invention} invention 
-     * @returns {inventionDto}
+     * @returns {inventionRequestDto}
      */
     toSimpDto(invention) {
-        return new inventionDto(
+        return new inventionRequestDto(
             invention.name
         );
     }

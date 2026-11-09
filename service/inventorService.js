@@ -175,10 +175,10 @@ class inventorService {
     /**
      * 
      * @param {Inventor} inventor 
-     * @returns {inventorDto}
+     * @returns {inventorRequestDto}
      */
     toSimpDto(inventor) {
-        return new inventionDto(
+        return new inventorRequestDto(
             inventor.name,
             inventor.bornAt,
             inventor.diedAt,
