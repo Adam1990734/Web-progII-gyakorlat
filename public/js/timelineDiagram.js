@@ -8,7 +8,7 @@
             data: {
                 labels: timeline.map(x => x.name),
                 datasets: [{
-                    label: 'Életévek',
+                    label: 'Ages',
                     data: timeline.map(x => [
                         Number(x.bornAt),
                         Number(x.diedAt) === 0 ? currentYear : Number(x.diedAt)
@@ -24,7 +24,7 @@
                         max: currentYear,
                         title: {
                             display: true,
-                            text: 'Év'
+                            text: 'Age'
                         }
                     }
                 }
