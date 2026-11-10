@@ -10,7 +10,7 @@
             data: {
                 labels: inventors,
                 datasets: [{
-                    label: 'Találmányok száma',
+                    label: 'Count Of Inventions',
                     data: counts,
                     backgroundColor: '#36A2EB'
                 }]
