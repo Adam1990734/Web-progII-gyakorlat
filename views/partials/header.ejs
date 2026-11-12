@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,22 +9,30 @@
             <div>
                 <a href="/">Home</a>
             </div>
-            <!-- Üzenet küldés -->
+             -->
+<!-- Üzenet küldés --><!--
+
             <div>
                 <a href="/contact">Contact</a>
             </div>
-            <!-- Diagram menü -->
+             -->
+<!-- Diagram menü --><!--
+
             <div>
                 <a href="/diagrams/withcount">WithCount</a>
                 <a href="/diagrams/timeline">Timeline</a>
             </div>
-            <!-- Üzenetek -->
+             -->
+<!-- Üzenetek --><!--
+
             <% if(user){ %>
                 <div>
                     <a href="/messages">Messages</a>
                 </div>
             <% } %>
-            <!-- CRUD -->
+             -->
+<!-- CRUD --><!--
+
             <% if(user && user.role=="ADMIN"){ %>
                 <div>
                     <a href="/crud/inventions">Inventions</a>
@@ -42,4 +51,67 @@
                 </div>
             <% } %>
         </nav>
-        <hr>
+        <hr> -->
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Találmányok & Feltalálók</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="<%= typeof isHome !== 'undefined' && isHome ? 'landing is-preload' : 'is-preload' %>">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="<%= typeof isHome !== 'undefined' && isHome ? 'alt' : '' %>">
+						<h1><a href="/">Találmányok Tára</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menü</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="/">Főoldal</a></li>
+											<li><a href="/show/inventors">Adatbázis – Feltalálók</a></li>
+											<li><a href="/show/inventions">Adatbázis – Találmányok</a></li>
+											<li><a href="/diagrams/withcount">Diagram – Találmányok száma</a></li>
+											<li><a href="/diagrams/timeline">Diagram – Idővonal</a></li>
+											<li><a href="/contact">Kapcsolat</a></li>
+											<% if(user){ %>
+												<li><a href="/messages">Üzenetek</a></li>
+											<% } %>
+											<% if(user && user.role=="ADMIN"){ %>
+												<li><a href="/crud/inventions">CRUD – Találmányok</a></li>
+												<li><a href="/crud/inventors">CRUD – Feltalálók</a></li>
+											<% } %>
+											<% if(!user){ %>
+												<li><a href="/login">Bejelentkezés</a></li>
+												<li><a href="/register">Regisztráció</a></li>
+											<% } else { %>
+												<li><a href="/logout">Kijelentkezés (<%= user.username %>)</a></li>
+											<% } %>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<% if (typeof isHome === 'undefined' || !isHome) { %>
+				<!-- Main wrapper az aloldalakhoz -->
+					<article id="main">
+						<header>
+							<h2><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Találmányok és Feltalálók' %></h2>
+							<p><%= typeof pageSubtitle !== 'undefined' ? pageSubtitle : 'Tudománytörténeti adatbázis és nyilvántartás' %></p>
+						</header>
+						<section class="wrapper style5">
+							<div class="inner">
+								<% if(typeof message !== 'undefined' && message){ %>
+									<blockquote style="border-left-color: #ed4933; font-weight: bold;"><%= message %></blockquote>
+								<% } %>
+				<% } %>
