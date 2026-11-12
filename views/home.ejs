@@ -1,4 +1,110 @@
+<!--
 <%- include("partials/header") %>
 <h1>Home</h1>
 <p>Available to all visitors.</p>
+<%- include("partials/footer") %> -->
+
+<%- include("partials/header", { isHome: true }) %>
+
+<!-- Banner -->
+<section id="banner">
+	<div class="inner">
+		<h2>Inventions &amp; Inventors</h2>
+		<p>Explore the most significant scientific<br />
+		breakthroughs in history and the minds<br />
+		behind them in our interactive database.</p>
+		<ul class="actions special">
+			<li><a href="/show/inventions" class="button primary">Explore Database</a></li>
+		</ul>
+	</div>
+	<a href="#one" class="more scrolly">Learn More</a>
+</section>
+
+<!-- One -->
+<section id="one" class="wrapper style1 special">
+	<div class="inner">
+		<header class="major">
+			<h2>Milestones of scientific progress<br />
+			organized in one place</h2>
+			<p>Our application aims to present world-changing inventions<br />
+			and their creators in a clear, searchable, and structured format.</p>
+		</header>
+		<ul class="icons major">
+			<li><span class="icon solid fa-lightbulb major style1"><span class="label">Ideas</span></span></li>
+			<li><span class="icon solid fa-cogs major style2"><span class="label">Technology</span></span></li>
+			<li><span class="icon solid fa-chart-bar major style3"><span class="label">Statistics</span></span></li>
+		</ul>
+	</div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper alt style2">
+	<section class="spotlight">
+		<div class="image"><img src="/images/pic01.jpg" alt="Inventors" /></div>
+		<div class="content">
+			<h2>Famous Inventors<br />
+			and their legacy</h2>
+			<p>Discover the brilliant minds whose perseverance and creativity opened new eras in human history.</p>
+		</div>
+	</section>
+	<section class="spotlight">
+		<div class="image"><img src="/images/pic02.jpg" alt="Inventions" /></div>
+		<div class="content">
+			<h2>Groundbreaking<br />
+			Inventions</h2>
+			<p>Browse through the defining engineering and scientific achievements across centuries in our detailed archive.</p>
+		</div>
+	</section>
+	<section class="spotlight">
+		<div class="image"><img src="/images/pic03.jpg" alt="Diagrams" /></div>
+		<div class="content">
+			<h2>Visual Statistics<br />
+			and Timeline</h2>
+			<p>Analyze the chronological distribution of inventions and the productivity of inventors through interactive Chart.js diagrams.</p>
+		</div>
+	</section>
+</section>
+
+<!-- Three -->
+<section id="three" class="wrapper style3 special">
+	<div class="inner">
+		<header class="major">
+			<h2>Application Features</h2>
+			<p>Everything you need to explore, analyze, and manage the archive.</p>
+		</header>
+		<ul class="features">
+			<li class="icon solid fa-database">
+				<h3>Relational Database</h3>
+				<p>Structured overview of inventors, inventions, and the connections between them.</p>
+			</li>
+			<li class="icon solid fa-chart-line">
+				<h3>Interactive Charts</h3>
+				<p>Dynamic visualizations generated directly from live database records.</p>
+			</li>
+			<li class="icon solid fa-envelope">
+				<h3>Contact &amp; Feedback</h3>
+				<p>Send messages or suggestions directly to the site administrators.</p>
+			</li>
+			<li class="icon solid fa-user-shield">
+				<h3>Admin Panel (CRUD)</h3>
+				<p>Role-based database management interface for authorized administrators.</p>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="wrapper style4">
+	<div class="inner">
+		<header>
+			<h2>Start Exploring</h2>
+			<p>Browse the list of inventors or get in touch with us!</p>
+		</header>
+		<ul class="actions stacked">
+			<li><a href="/show/inventors" class="button fit primary">Inventors</a></li>
+			<li><a href="/contact" class="button fit">Contact</a></li>
+		</ul>
+	</div>
+</section>
+
 <%- include("partials/footer") %>

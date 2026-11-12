@@ -56,58 +56,127 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Találmányok & Feltalálók</title>
+		<title>Inventions &amp; Inventors</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+		<style>
+			/* Garantáltan működő oldalsó menü felülírás */
+			#custom-side-menu {
+				position: fixed;
+				top: 0;
+				right: -22em;
+				width: 20em;
+				max-width: 80%;
+				height: 100%;
+				background: #21b2a6;
+				color: #ffffff;
+				z-index: 99999;
+				padding: 3em 2em;
+				overflow-y: auto;
+				transition: right 0.35s ease;
+				box-shadow: -5px 0 20px rgba(0,0,0,0.4);
+			}
+			#custom-side-menu.open {
+				right: 0;
+			}
+			#custom-side-menu ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			#custom-side-menu ul li {
+				border-top: solid 1px rgba(0, 0, 0, 0.15);
+				padding: 0.75em 0;
+			}
+			#custom-side-menu ul li:first-child {
+				border-top: 0;
+			}
+			#custom-side-menu ul li a {
+				border: 0;
+				color: #ffffff !important;
+				display: block;
+				font-size: 0.85em;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				text-decoration: none;
+			}
+			#custom-side-menu ul li a:hover {
+				opacity: 0.75;
+			}
+			#custom-menu-close {
+				position: absolute;
+				top: 1em;
+				right: 1.5em;
+				color: #ffffff;
+				font-size: 1.5em;
+				cursor: pointer;
+				border: 0;
+				text-decoration: none;
+			}
+			#custom-menu-overlay {
+				display: none;
+				position: fixed;
+				inset: 0;
+				background: rgba(0,0,0,0.5);
+				z-index: 99998;
+			}
+			#custom-menu-overlay.open {
+				display: block;
+			}
+		</style>
 	</head>
-	<body class="<%= typeof isHome !== 'undefined' && isHome ? 'landing is-preload' : 'is-preload' %>">
+	<body class="<%= typeof isHome !== 'undefined' && isHome ? 'landing' : '' %>">
+
+		<!-- Saját, üzembiztos oldalsó menü -->
+		<div id="custom-menu-overlay" onclick="toggleCustomMenu()"></div>
+		<div id="custom-side-menu">
+			<a href="javascript:void(0)" id="custom-menu-close" onclick="toggleCustomMenu()">&times;</a>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/show/inventors">Database – Inventors</a></li>
+				<li><a href="/show/inventions">Database – Inventions</a></li>
+				<li><a href="/diagrams/withcount">Diagram – WithCount</a></li>
+				<li><a href="/diagrams/timeline">Diagram – Timeline</a></li>
+				<li><a href="/contact">Contact</a></li>
+				<% if(user){ %>
+					<li><a href="/messages">Messages</a></li>
+				<% } %>
+				<% if(user && user.role=="ADMIN"){ %>
+					<li><a href="/crud/inventions">CRUD – Inventions</a></li>
+					<li><a href="/crud/inventors">CRUD – Inventors</a></li>
+				<% } %>
+				<% if(!user){ %>
+					<li><a href="/login">Login</a></li>
+					<li><a href="/register">Register</a></li>
+				<% } else { %>
+					<li><a href="/logout">Logout (<%= user.username %>)</a></li>
+				<% } %>
+			</ul>
+		</div>
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
 
 				<!-- Header -->
 					<header id="header" class="<%= typeof isHome !== 'undefined' && isHome ? 'alt' : '' %>">
-						<h1><a href="/">Találmányok Tára</a></h1>
+						<h1><a href="/">Inventions Archive</a></h1>
 						<nav id="nav">
 							<ul>
 								<li class="special">
-									<a href="#menu" class="menuToggle"><span>Menü</span></a>
-									<div id="menu">
-										<ul>
-											<li><a href="/">Főoldal</a></li>
-											<li><a href="/show/inventors">Adatbázis – Feltalálók</a></li>
-											<li><a href="/show/inventions">Adatbázis – Találmányok</a></li>
-											<li><a href="/diagrams/withcount">Diagram – Találmányok száma</a></li>
-											<li><a href="/diagrams/timeline">Diagram – Idővonal</a></li>
-											<li><a href="/contact">Kapcsolat</a></li>
-											<% if(user){ %>
-												<li><a href="/messages">Üzenetek</a></li>
-											<% } %>
-											<% if(user && user.role=="ADMIN"){ %>
-												<li><a href="/crud/inventions">CRUD – Találmányok</a></li>
-												<li><a href="/crud/inventors">CRUD – Feltalálók</a></li>
-											<% } %>
-											<% if(!user){ %>
-												<li><a href="/login">Bejelentkezés</a></li>
-												<li><a href="/register">Regisztráció</a></li>
-											<% } else { %>
-												<li><a href="/logout">Kijelentkezés (<%= user.username %>)</a></li>
-											<% } %>
-										</ul>
-									</div>
+									<a href="javascript:void(0)" class="menuToggle" onclick="toggleCustomMenu()"><span>Menu</span></a>
 								</li>
 							</ul>
 						</nav>
 					</header>
 
 				<% if (typeof isHome === 'undefined' || !isHome) { %>
-				<!-- Main wrapper az aloldalakhoz -->
+				<!-- Main wrapper for subpages -->
 					<article id="main">
 						<header>
-							<h2><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Találmányok és Feltalálók' %></h2>
-							<p><%= typeof pageSubtitle !== 'undefined' ? pageSubtitle : 'Tudománytörténeti adatbázis és nyilvántartás' %></p>
+							<h2><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Inventions & Inventors' %></h2>
+							<p><%= typeof pageSubtitle !== 'undefined' ? pageSubtitle : 'Scientific history database and archive' %></p>
 						</header>
 						<section class="wrapper style5">
 							<div class="inner">
