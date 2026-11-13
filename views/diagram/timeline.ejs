@@ -1,6 +1,14 @@
-<%- include("../partials/header") %>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <h1>Inventors Timelines</h1>
-    <canvas id="timelineDiagram"></canvas>
-    <script src="/js/timelineDiagram.js"></script>
+<%- include("../partials/header", { pageTitle: "Inventors Timelines", pageSubtitle: "Visual representation of inventors' lifespans across history" }) %>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<section>
+	<h3>Inventors Timelines</h3>
+	<div style="background: #ffffff; padding: 1.5em; border-radius: 4px; border: 1px solid #dfdfdf;">
+		<canvas id="timelineDiagram"></canvas>
+	</div>
+</section>
+
+<script src="/js/timelineDiagram.js"></script>
+
 <%- include("../partials/footer") %>

@@ -1,6 +1,14 @@
-<%- include("../partials/header") %>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <h1>Inventors With Count of Inventions</h1>
-    <canvas id="barDiagram"></canvas>
-    <script src="/js/withCountDiagram.js"></script>
+<%- include("../partials/header", { pageTitle: "Inventions Count", pageSubtitle: "Number of recorded inventions per inventor" }) %>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<section>
+	<h3>Inventors With Count of Inventions</h3>
+	<div style="background: #ffffff; padding: 1.5em; border-radius: 4px; border: 1px solid #dfdfdf;">
+		<canvas id="barDiagram"></canvas>
+	</div>
+</section>
+
+<script src="/js/withCountDiagram.js"></script>
+
 <%- include("../partials/footer") %>
