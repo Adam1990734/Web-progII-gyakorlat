@@ -53,7 +53,7 @@ class messageService {
     async create(user, message) {
         const messageCreated = await Message.create({
             content: message.getContent(),
-            createdAt: message.getCreatedAt(),
+            createdAt: Date.now(),
             user: user
         });
         if(user) {
@@ -100,7 +100,7 @@ class messageService {
      * @returns {messageResponseDto} 
      */
     toSimpDto(message) {
-        return new messageDto(
+        return new messageRequestDto(
             message.content,
             message.createdAt
         );

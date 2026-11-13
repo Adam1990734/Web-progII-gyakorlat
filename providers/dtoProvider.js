@@ -40,8 +40,7 @@ exports.inventorDtoInejctionPost =(req, res, next) => {
  */
 exports.messageDtoInejctionPost =(req, res, next) => {
     req.dto = new messageRequestDto(
-        req.body.content,
-        Date.now()
+        req.body.content
     );
     next();
 };

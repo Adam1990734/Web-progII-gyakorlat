@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 		<style>
-			/* Garantáltan működő oldalsó menü felülírás */
 			#custom-side-menu {
 				position: fixed;
 				top: 0;
@@ -73,8 +72,6 @@
 		</style>
 	</head>
 	<body class="<%= typeof isHome !== 'undefined' && isHome ? 'landing' : '' %>">
-
-		<!-- Saját, üzembiztos oldalsó menü -->
 		<div id="custom-menu-overlay" onclick="toggleCustomMenu()"></div>
 		<div id="custom-side-menu">
 			<a href="javascript:void(0)" id="custom-menu-close" onclick="toggleCustomMenu()">&times;</a>
@@ -102,11 +99,7 @@
 				<% } %>
 			</ul>
 		</div>
-
-		<!-- Page Wrapper -->
 			<div id="page-wrapper">
-
-				<!-- Header -->
 					<header id="header" class="<%= typeof isHome !== 'undefined' && isHome ? 'alt' : '' %>">
 						<h1><a href="/">Inventions Archive</a></h1>
 						<nav id="nav">
@@ -119,7 +112,6 @@
 					</header>
 
 				<% if (typeof isHome === 'undefined' || !isHome) { %>
-				<!-- Main wrapper for subpages -->
 					<article id="main">
 						<header>
 							<h2><%= typeof pageTitle !== 'undefined' ? pageTitle : 'Inventions & Inventors' %></h2>

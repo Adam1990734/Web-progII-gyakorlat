@@ -5,8 +5,12 @@
 	<form method="post">
 		<div class="row gtr-uniform">
 			<div class="col-12">
-				<label for="content">Message:</label>
-				<textarea name="content" id="content" placeholder="Enter your message here..." rows="6" required></textarea>
+				<% if (error) { %>
+					<div>
+						<span><%= error %></span>
+					</div>
+				<% } %>
+				<textarea name="content" id="content" placeholder="Enter your message here..." rows="6"></textarea>
 			</div>
 			<div class="col-12">
 				<ul class="actions">

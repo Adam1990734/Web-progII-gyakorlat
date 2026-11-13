@@ -11,7 +11,9 @@ const express = require("express");
  * @param {express.Request} req 
  * @param {express.Response} res
  */
-exports.contactIndexGet = (req, res) => res.render("message/create");
+exports.contactIndexGet = (req, res) => res.render("message/create", {
+    error: null
+});
 
 /**
  * @param {express.Request} req 

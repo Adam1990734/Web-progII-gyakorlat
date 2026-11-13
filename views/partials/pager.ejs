@@ -1,8 +1,8 @@
 <div id="pager" style="display: flex; align-items: center; gap: 1em; flex-wrap: wrap;">
 	<% if (lastpage > 0) { %>
 		<form method="get" style="margin: 0;">
-			<input hidden type="text" name="page" value="<%= lastpage - 1 %>">
-			<button type="submit" class="button small icon solid fa-arrow-left">Previous</button>
+			<input hidden type="number" name="page" value="<%= lastpage - 1 %>">
+			<button class="pagerInput" type="submit" class="button small icon solid fa-arrow-left">Previous</button>
 		</form>
 	<% } %>
 
@@ -12,7 +12,7 @@
 
 	<% if (lastpage + 1 < (allcount / len)) { %>
 		<form method="get" style="margin: 0;">
-			<input hidden type="text" name="page" value="<%= lastpage + 1 %>">
+			<input hidden type="number" name="page" value="<%= lastpage + 1 %>">
 			<button type="submit" class="button primary small icon solid fa-arrow-right">Next</button>
 		</form>
 	<% } %>
