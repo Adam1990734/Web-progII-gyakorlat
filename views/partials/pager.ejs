@@ -1,14 +1,19 @@
-<div id="pager">
-    <% if (lastpage + 1 < (allcount / len)) { %>
-        <form method="get">
-            <input hidden type="text" name="page" value="<%= lastpage + 1 %>">
-            <button type="submit">Next</button>
-        </form>
-    <% } %>
-    <% if (lastpage > 0) { %>
-        <form method="get">
-            <input hidden type="text" name="page" value="<%= lastpage - 1 %>">
-            <button type="submit">Prev</button>
-        </form>
-    <% } %>
+<div id="pager" style="display: flex; align-items: center; gap: 1em; flex-wrap: wrap;">
+	<% if (lastpage > 0) { %>
+		<form method="get" style="margin: 0;">
+			<input hidden type="text" name="page" value="<%= lastpage - 1 %>">
+			<button type="submit" class="button small icon solid fa-arrow-left">Previous</button>
+		</form>
+	<% } %>
+
+	<span style="font-size: 0.9em; letter-spacing: 0.1em; text-transform: uppercase;">
+		Page <strong><%= lastpage + 1 %></strong> of <strong><%= Math.max(1, Math.ceil(allcount / len)) %></strong>
+	</span>
+
+	<% if (lastpage + 1 < (allcount / len)) { %>
+		<form method="get" style="margin: 0;">
+			<input hidden type="text" name="page" value="<%= lastpage + 1 %>">
+			<button type="submit" class="button primary small icon solid fa-arrow-right">Next</button>
+		</form>
+	<% } %>
 </div>

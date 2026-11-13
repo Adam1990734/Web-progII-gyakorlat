@@ -1,4 +1,13 @@
-<%- include("partials/header") %>
-<h1>Admin page</h1>
-<p>For admin only.</p>
+<%- include("partials/header", { pageTitle: "Admin Dashboard", pageSubtitle: "Restricted area for administrators" }) %>
+
+<section>
+	<h3>Admin Page</h3>
+	<p>Welcome to the administrator area. You have full access to manage inventions, inventors, and user messages.</p>
+	<ul class="actions">
+		<li><a href="/crud/inventions" class="button primary">Manage Inventions</a></li>
+		<li><a href="/crud/inventors" class="button primary">Manage Inventors</a></li>
+		<li><a href="/messages" class="button">View Messages</a></li>
+	</ul>
+</section>
+
 <%- include("partials/footer") %>

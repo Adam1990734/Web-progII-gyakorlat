@@ -1,4 +1,13 @@
-<%- include("partials/header") %>
-<h1>User page</h1>
-<p>Only for logged in users..</p>
+<%- include("partials/header", { pageTitle: "User Dashboard", pageSubtitle: "Member area for logged-in users" }) %>
+
+<section>
+	<h3>User Page</h3>
+	<p>Welcome! This section is available only for authenticated users.</p>
+	<ul class="actions">
+		<li><a href="/show/inventions" class="button primary">Explore Inventions</a></li>
+		<li><a href="/show/inventors" class="button">Explore Inventors</a></li>
+		<li><a href="/messages" class="button">Messages</a></li>
+	</ul>
+</section>
+
 <%- include("partials/footer") %>
