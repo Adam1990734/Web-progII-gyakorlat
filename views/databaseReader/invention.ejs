@@ -1,18 +1,27 @@
-<%- include("../partials/header") %>
-    <h1>Inventions</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% inventions.forEach(invention => { %>
-                <tr>
-                    <td><%= invention.getName() %></td>
-                </tr>
-            <% }) %>
-        </tbody>
-    </table>
-    <%- include('../partials/pager') %>
+<%- include("../partials/header", { pageTitle: "Inventions Database", pageSubtitle: "Browse all recorded scientific inventions" }) %>
+
+<section>
+	<h3>Inventions</h3>
+	<div class="table-wrapper">
+		<table class="alt">
+			<thead>
+				<tr>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% inventions.forEach(invention => { %>
+					<tr>
+						<td><strong><%= invention.getName() %></strong></td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+	<div style="margin-top: 1.5em;">
+		<%- include('../partials/pager') %>
+	</div>
+</section>
+
 <%- include("../partials/footer") %>

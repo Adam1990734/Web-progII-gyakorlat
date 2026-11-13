@@ -1,22 +1,31 @@
-<%- include("../partials/header") %>
-    <h1>Inventions</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Born In</th>
-                <th>Died In</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% inventors.forEach(inventor => { %>
-                <tr>
-                    <td><%= inventor.getName() %></td>
-                    <td><%= inventor.getBornAt() %></td>
-                    <td><%= inventor.getDiedAt() %></td>
-                </tr>
-            <% }) %>
-        </tbody>
-    </table>
-    <%- include('../partials/pager') %>
+<%- include("../partials/header", { pageTitle: "Inventors Database", pageSubtitle: "Explore famous inventors and their lifespans" }) %>
+
+<section>
+	<h3>Inventors</h3>
+	<div class="table-wrapper">
+		<table class="alt">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Born In</th>
+					<th>Died In</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% inventors.forEach(inventor => { %>
+					<tr>
+						<td><strong><%= inventor.getName() %></strong></td>
+						<td><%= inventor.getBornAt() %></td>
+						<td><%= inventor.getDiedAt() %></td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+	<div style="margin-top: 1.5em;">
+		<%- include('../partials/pager') %>
+	</div>
+</section>
+
 <%- include("../partials/footer") %>
