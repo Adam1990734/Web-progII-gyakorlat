@@ -1,5 +1,5 @@
 const User = require("../models/user/User");
-const UserRole = require("../models/user/userRole");
+const UserRole = require("../models/user/UserRole");
 const bcrypt = require("bcrypt");
 
 exports.homeIndex = (req, res) => res.render("home");
