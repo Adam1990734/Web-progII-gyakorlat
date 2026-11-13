@@ -1,7 +1,9 @@
-<div>
-    <input type="text" id="searcher"/>
-	<div id="suggestions"></div>
-	<h4>Selected inventions</h4>
+<div class="box" style="margin-top: 0.5em; margin-bottom: 0.5em;">
+	<label for="searcher">Search and Link Inventions:</label>
+	<input type="text" id="searcher" placeholder="Type invention name to search..." />
+	<div id="suggestions" style="margin-top: 0.5em;"></div>
+
+	<h4 style="margin-top: 1.5em; margin-bottom: 0.5em;">Selected Inventions</h4>
 	<% if (isUpdate) { %>
 		<script>
 			let selectedInventions = <%- JSON.stringify(inventor.getInventions()) %>;

@@ -1,19 +1,32 @@
-<%- include("../partials/header") %>
-    <form method="post">
-        <div>
-            <label>Name:</label>
-            <input name="name">
-        </div>
-        <div>
-            <label>Born In:</label>
-            <input name="bornAt">
-        </div>
-        <div>
-            <label>Died In:</label>
-            <input name="diedAt">
-        </div>
-        <%- include('selecter') %>
-        <button type="submit">Create</button>
-    </form>
-    <a href="/crud/inventors">Back</a>
+<%- include("../partials/header", { pageTitle: "Create Inventor", pageSubtitle: "Add a new inventor and link their inventions" }) %>
+
+<section>
+	<h3>New Inventor</h3>
+	<form method="post">
+		<div class="row gtr-uniform">
+			<div class="col-12">
+				<label for="name">Name:</label>
+				<input type="text" name="name" id="name" placeholder="Inventor name" required />
+			</div>
+			<div class="col-6 col-12-xsmall">
+				<label for="bornAt">Born In:</label>
+				<input type="text" name="bornAt" id="bornAt" placeholder="Birth year" />
+			</div>
+			<div class="col-6 col-12-xsmall">
+				<label for="diedAt">Died In:</label>
+				<input type="text" name="diedAt" id="diedAt" placeholder="Death year" />
+			</div>
+			<div class="col-12">
+				<%- include('selecter') %>
+			</div>
+			<div class="col-12">
+				<ul class="actions">
+					<li><input type="submit" value="Create" class="primary" /></li>
+					<li><a href="/crud/inventors" class="button">Back</a></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+</section>
+
 <%- include("../partials/footer") %>

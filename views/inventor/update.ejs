@@ -1,19 +1,32 @@
-<%- include("../partials/header") %>
-    <form method="post" action="/crud/inventors/update/<%= inventor.getId() %>">
-        <div>
-            <label>Name:</label>
-            <input name="name" value="<%= inventor.getName() %>">
-        </div>
-        <div>
-            <label>Born In:</label>
-            <input name="bornAt" value="<%= inventor.getBornAt() %>">
-        </div>
-        <div>
-            <label>Died In:</label>
-            <input name="diedAt" value="<%= inventor.getDiedAt() %>">
-        </div>
-        <%- include('selecter') %>
-        <button type="submit">Update</button>
-    </form>
-    <a href="/crud/inventors">Back</a>
+<%- include("../partials/header", { pageTitle: "Edit Inventor", pageSubtitle: "Modify inventor details and linked inventions" }) %>
+
+<section>
+	<h3>Update Inventor</h3>
+	<form method="post" action="/crud/inventors/update/<%= inventor.getId() %>">
+		<div class="row gtr-uniform">
+			<div class="col-12">
+				<label for="name">Name:</label>
+				<input type="text" name="name" id="name" value="<%= inventor.getName() %>" required />
+			</div>
+			<div class="col-6 col-12-xsmall">
+				<label for="bornAt">Born In:</label>
+				<input type="text" name="bornAt" id="bornAt" value="<%= inventor.getBornAt() %>" />
+			</div>
+			<div class="col-6 col-12-xsmall">
+				<label for="diedAt">Died In:</label>
+				<input type="text" name="diedAt" id="diedAt" value="<%= inventor.getDiedAt() %>" />
+			</div>
+			<div class="col-12">
+				<%- include('selecter') %>
+			</div>
+			<div class="col-12">
+				<ul class="actions">
+					<li><input type="submit" value="Update" class="primary" /></li>
+					<li><a href="/crud/inventors" class="button">Back</a></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+</section>
+
 <%- include("../partials/footer") %>

@@ -1,33 +1,45 @@
-<%- include("../partials/header") %>
-    <div>
-        <h2>Inventor Details</h2>
-        <div>
-            <div>
-                <span>Name</span>
-                <span><%= inventor.getName() %></span>
-            </div>
-            <div>
-                <span>Name</span>
-                <span><%= inventor.getBornAt() %></span>
-            </div>
-            <div>
-                <span>Name</span>
-                <span><%= inventor.getDiedAt() %></span>
-            </div>
-            <div>
-                <% if (inventor.getInventions().length > 0) { %>
-                 <span>Related Inventors</span>
-                    <ul>
-                        <% inventor.getInventions().forEach(invention => { %>
-                         <li><%= invention.getName() %></li>
-                        <% }) %>
-                        
-                    </ul>
-                <% } else { %>
-                    <span>There is no related inventions</span>
-                <% } %>
-            </div>
-        </div>
-    </div>
-    <a href="/crud/inventors">Back</a>
+<%- include("../partials/header", { pageTitle: "Inventor Details", pageSubtitle: "Biographical data and associated inventions" }) %>
+
+<section>
+	<h3>Inventor Details</h3>
+
+	<div class="table-wrapper">
+		<table class="alt">
+			<tbody>
+				<tr>
+					<th style="width: 220px;">Name</th>
+					<td><strong><%= inventor.getName() %></strong></td>
+				</tr>
+				<tr>
+					<th>Born In</th>
+					<td><%= inventor.getBornAt() %></td>
+				</tr>
+				<tr>
+					<th>Died In</th>
+					<td><%= inventor.getDiedAt() %></td>
+				</tr>
+				<tr>
+					<th>Related Inventions</th>
+					<td>
+						<% if (inventor.getInventions().length > 0) { %>
+							<ul style="margin-bottom: 0;">
+								<% inventor.getInventions().forEach(invention => { %>
+									<li><%= invention.getName() %></li>
+								<% }) %>
+							</ul>
+						<% } else { %>
+							<em>There are no related inventions.</em>
+						<% } %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<ul class="actions" style="margin-top: 1.5em;">
+		<li><a href="/crud/inventors/update/<%= inventor.getId() %>" class="button primary">Edit</a></li>
+		<li><a href="/crud/inventors" class="button">Back</a></li>
+	</ul>
+</section>
+
 <%- include("../partials/footer") %>

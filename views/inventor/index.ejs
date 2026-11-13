@@ -1,29 +1,43 @@
-<%- include("../partials/header") %>
-    <h1>Inventions</h1>
-    <a href="/crud/inventors/create">Create a new inventor!</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Born In</th>
-                <th>Died In</th>
-                <th>Operatios</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% inventors.forEach(inventor => { %>
-                <tr>
-                    <td><%= inventor.getName() %></td>
-                    <td><%= inventor.getBornAt() %></td>
-                    <td><%= inventor.getDiedAt() %></td>
-                    <td>
-                        <a href="/crud/inventors/details/<%= inventor.getId() %>">Details</a>
-                        <a href="/crud/inventors/update/<%= inventor.getId() %>">Edit</a>
-                        <a href="/crud/inventors/delete/<%= inventor.getId() %>">Delete</a>
-                    </td>
-                </tr>
-            <% }) %>
-        </tbody>
-    </table>
-    <%- include('../partials/pager') %>
+<%- include("../partials/header", { pageTitle: "Manage Inventors", pageSubtitle: "Admin CRUD interface for inventors and their lifespans" }) %>
+
+<section>
+	<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5em; flex-wrap: wrap; gap: 1em;">
+		<h3 style="margin: 0;">Inventors</h3>
+		<a href="/crud/inventors/create" class="button primary icon solid fa-plus">Create a new inventor</a>
+	</div>
+
+	<div class="table-wrapper">
+		<table class="alt">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Born In</th>
+					<th>Died In</th>
+					<th style="width: 320px;">Operations</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% inventors.forEach(inventor => { %>
+					<tr>
+						<td><strong><%= inventor.getName() %></strong></td>
+						<td><%= inventor.getBornAt() %></td>
+						<td><%= inventor.getDiedAt() %></td>
+						<td>
+							<ul class="actions small" style="margin-bottom: 0;">
+								<li><a href="/crud/inventors/details/<%= inventor.getId() %>" class="button small">Details</a></li>
+								<li><a href="/crud/inventors/update/<%= inventor.getId() %>" class="button small">Edit</a></li>
+								<li><a href="/crud/inventors/delete/<%= inventor.getId() %>" class="button primary small">Delete</a></li>
+							</ul>
+						</td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+	<div style="margin-top: 1.5em;">
+		<%- include('../partials/pager') %>
+	</div>
+</section>
+
 <%- include("../partials/footer") %>
