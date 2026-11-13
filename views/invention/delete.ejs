@@ -1,10 +1,21 @@
-<%- include("../partials/header") %>
-    <form method="post" action="/crud/inventions/delete/<%= invention.getId() %>">
-        <div>
-            <label>Name:</label>
-            <input name="name" value="<%= invention.getName() %>" readonly>
-        </div>
-        <button type="submit">Delete</button>
-    </form>
-    <a href="/crud/inventions">Back</a>
+<%- include("../partials/header", { pageTitle: "Delete Invention", pageSubtitle: "Confirm removal of this record from the database" }) %>
+
+<section>
+	<h3>Delete Invention</h3>
+	<form method="post" action="/crud/inventions/delete/<%= invention.getId() %>">
+		<div class="row gtr-uniform">
+			<div class="col-12">
+				<label for="name">Name:</label>
+				<input type="text" name="name" id="name" value="<%= invention.getName() %>" readonly />
+			</div>
+			<div class="col-12">
+				<ul class="actions">
+					<li><input type="submit" value="Delete" class="primary" /></li>
+					<li><a href="/crud/inventions" class="button">Back</a></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+</section>
+
 <%- include("../partials/footer") %>

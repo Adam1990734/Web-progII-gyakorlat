@@ -1,25 +1,37 @@
-<%- include("../partials/header") %>
-    <div>
-        <h2>Invention Details</h2>
-        <div>
-            <div>
-                <span>Name</span>
-                <span><%= invention.getName() %></span>
-            </div>
-            <div>
-                <% if (invention.getInventors().length > 0) { %>
-                 <span>Related Inventors</span>
-                    <ul>
-                        <% invention.getInventors().forEach(inventor => { %>
-                         <li><%= inventor.getName() %></li>
-                        <% }) %>
-                        
-                    </ul>
-                <% } else { %>
-                    <span>There is no related inventor</span>
-                <% } %>
-            </div>
-        </div>
-    </div>
-    <a href="/crud/inventions">Back</a>
+<%- include("../partials/header", { pageTitle: "Invention Details", pageSubtitle: "Detailed view and associated inventors" }) %>
+
+<section>
+	<h3>Invention Details</h3>
+
+	<div class="table-wrapper">
+		<table class="alt">
+			<tbody>
+				<tr>
+					<th style="width: 220px;">Name</th>
+					<td><strong><%= invention.getName() %></strong></td>
+				</tr>
+				<tr>
+					<th>Related Inventors</th>
+					<td>
+						<% if (invention.getInventors().length > 0) { %>
+							<ul style="margin-bottom: 0;">
+								<% invention.getInventors().forEach(inventor => { %>
+									<li><%= inventor.getName() %></li>
+								<% }) %>
+							</ul>
+						<% } else { %>
+							<em>There is no related inventor.</em>
+						<% } %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<ul class="actions" style="margin-top: 1.5em;">
+		<li><a href="/crud/inventions/update/<%= invention.getId() %>" class="button primary">Edit</a></li>
+		<li><a href="/crud/inventions" class="button">Back</a></li>
+	</ul>
+</section>
+
 <%- include("../partials/footer") %>

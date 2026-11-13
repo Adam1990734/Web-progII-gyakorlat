@@ -1,10 +1,21 @@
-<%- include("../partials/header") %>
-    <form method="post">
-        <div>
-            <label>Name:</label>
-            <input name="name">
-        </div>
-        <button type="submit">Create</button>
-    </form>
-    <a href="/crud/inventions">Back</a>
+<%- include("../partials/header", { pageTitle: "Create Invention", pageSubtitle: "Add a new invention to the archive" }) %>
+
+<section>
+	<h3>New Invention</h3>
+	<form method="post">
+		<div class="row gtr-uniform">
+			<div class="col-12">
+				<label for="name">Name:</label>
+				<input type="text" name="name" id="name" placeholder="Invention name" required />
+			</div>
+			<div class="col-12">
+				<ul class="actions">
+					<li><input type="submit" value="Create" class="primary" /></li>
+					<li><a href="/crud/inventions" class="button">Back</a></li>
+				</ul>
+			</div>
+		</div>
+	</form>
+</section>
+
 <%- include("../partials/footer") %>

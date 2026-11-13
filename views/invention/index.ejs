@@ -1,25 +1,39 @@
-<%- include("../partials/header") %>
-    <h1>Inventions</h1>
-    <a href="/crud/inventions/create">Create a new invention!</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Operatios</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% inventions.forEach(invention => { %>
-                <tr>
-                    <td><%= invention.getName() %></td>
-                    <td>
-                        <a href="/crud/inventions/details/<%= invention.getId() %>">Details</a>
-                        <a href="/crud/inventions/update/<%= invention.getId() %>">Edit</a>
-                        <a href="/crud/inventions/delete/<%= invention.getId() %>">Delete</a>
-                    </td>
-                </tr>
-            <% }) %>
-        </tbody>
-    </table>
-    <%- include('../partials/pager') %>
+<%- include("../partials/header", { pageTitle: "Manage Inventions", pageSubtitle: "Admin CRUD interface for scientific inventions" }) %>
+
+<section>
+	<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5em; flex-wrap: wrap; gap: 1em;">
+		<h3 style="margin: 0;">Inventions</h3>
+		<a href="/crud/inventions/create" class="button primary icon solid fa-plus">Create a new invention</a>
+	</div>
+
+	<div class="table-wrapper">
+		<table class="alt">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th style="width: 320px;">Operations</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% inventions.forEach(invention => { %>
+					<tr>
+						<td><strong><%= invention.getName() %></strong></td>
+						<td>
+							<ul class="actions small" style="margin-bottom: 0;">
+								<li><a href="/crud/inventions/details/<%= invention.getId() %>" class="button small">Details</a></li>
+								<li><a href="/crud/inventions/update/<%= invention.getId() %>" class="button small">Edit</a></li>
+								<li><a href="/crud/inventions/delete/<%= invention.getId() %>" class="button primary small">Delete</a></li>
+							</ul>
+						</td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+	<div style="margin-top: 1.5em;">
+		<%- include('../partials/pager') %>
+	</div>
+</section>
+
 <%- include("../partials/footer") %>
