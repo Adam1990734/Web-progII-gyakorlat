@@ -1,24 +1,31 @@
-<%- include("../partials/header") %>
-<h1>
-    Messsages
-</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Crated At</th>
-            <th>Content</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% messages.forEach(element => { %>
-            <tr>
-                <td><%= element.getUserName() %></td>
-                <td><%= element.getCreatedAt() %></td>
-                <td><%= element.getContent() %></td>
-            </tr>
-        <% }) %>
-    </tbody>
-</table>
-<%- include('../partials/pager') %>
+<%- include("../partials/header", { pageTitle: "Messages", pageSubtitle: "Submitted messages sorted in reverse chronological order" }) %>
+
+<section>
+	<h3>Received Messages</h3>
+	<div class="table-wrapper">
+		<table class="alt">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Created At</th>
+					<th>Content</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% messages.forEach(element => { %>
+					<tr>
+						<td><strong><%= element.getUserName() %></strong></td>
+						<td><%= element.getCreatedAt() %></td>
+						<td><%= element.getContent() %></td>
+					</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+	<div style="margin-top: 1.5em;">
+		<%- include('../partials/pager') %>
+	</div>
+</section>
+
 <%- include("../partials/footer") %>
