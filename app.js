@@ -5,6 +5,8 @@ const session = require("express-session");
 const { MongoStore } = require("connect-mongo");
 const app = express();
 
+require("dns").setServers(['8.8.8.8', '8.8.4.4']);
+
 mongoose.connect(process.env.MONGO_URI);
 
 app.set("view engine", "ejs");
