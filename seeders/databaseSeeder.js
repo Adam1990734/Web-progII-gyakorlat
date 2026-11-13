@@ -1,4 +1,5 @@
 const roleSeeder = require("./seeder/roleSeeder");
+const userSeeder = require("./seeder/userSeeder");
 const inventorSeeder = require("./seeder/inventorSeeder");
 const inventionSeeder = require("./seeder/inventionSeeder");
 const { default: mongoose } = require("mongoose");
@@ -52,6 +53,19 @@ async function JoinInventorAndInvention(seedSource = "", inventors = new Map(), 
     }
 }
 
+async function JoinUsersAndUserRoles(users = [], roles = new Map()) {
+    for await (const u of users) {
+        console.log(u);
+        const role = roles[u.roleid];
+        const user = u.user;
+        user.role = role._id;
+        role.users.push(user);
+
+        await user.save();
+        await role.save();
+    }
+}
+
 async function main() {
     try {
         const connection = await mongoose.connect(process.env.MONGO_URI);
@@ -59,6 +73,12 @@ async function main() {
         const roleseed = new roleSeeder();
         await roleseed.down();
         await roleseed.up("roles.txt");
+        //User-ek seedelése:
+        const userseed = new userSeeder();
+        await userseed.down();
+        await userseed.up("users.txt");
+        //Join users and roles:
+        await JoinUsersAndUserRoles(userseed.getUsers, roleseed.getRoles);
         //Inventorok seedelése:
         const inventorseed = new inventorSeeder();
         await inventorseed.down();

@@ -1,10 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
-const UserRole = require("../../models/user/userRole");
+const UserRole = require("../../models/user/UserRole");
 
 class roleSeederData {
-    _roleContainer = [];
+    _roleContainer = new Map();
 }
 
 class roleSeeder extends roleSeederData {
@@ -30,7 +30,7 @@ class roleSeeder extends roleSeederData {
                 name: splitted[1],
                 users: []
             });
-            this._roleContainer.push(userRole);
+            this._roleContainer[Number(splitted[0])] = userRole;
         }
     }
     async down() { await UserRole.deleteMany(); }
