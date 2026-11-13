@@ -27,20 +27,12 @@ class inventorSeeder extends inventorSeederData {
         for await (const line of rl) {
             const splitted = line.split("\t").map(elem => elem.trim());
             let inventor = null;
-            if(splitted.length > 3)
-                inventor = await Inventor.create({
-                    name: splitted[1],
-                    bornAt: Number(splitted[2]),
-                    diedAt: Number(splitted[3]),
-                    inventions: []
-                });
-            else
-                inventor = await Inventor.create({
-                    name: splitted[1],
-                    bornAt: Number(splitted[2]),
-                    diedAt: null,
-                    inventions: []
-                });
+            inventor = await Inventor.create({
+                name: splitted[1],
+                bornAt: Number(splitted[2]),
+                diedAt: splitted[3] === "" ? null : Number(splitted[3]),
+                inventions: []
+            });
             if(inventor !== null)
                 this._inventorContainer[Number(splitted[0])] = inventor;
         }

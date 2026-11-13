@@ -16,7 +16,13 @@
 					<tr>
 						<td><strong><%= inventor.getName() %></strong></td>
 						<td><%= inventor.getBornAt() %></td>
-						<td><%= inventor.getDiedAt() %></td>
+						<td>
+							<% if (inventor.getDiedAt() === null) { %>
+								<span>-</span>
+							<% } else { %>
+								<%= inventor.getDiedAt()  %>
+							<% } %>
+						</td>
 					</tr>
 				<% }) %>
 			</tbody>
