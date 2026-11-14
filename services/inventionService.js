@@ -53,9 +53,12 @@ class inventionService {
      * @returns {inventionResponseDto}
      */
     async create(invention) {
+        console.log(invention);
         const inventionCreated = await Invention.create({
-            name: invention.getName()
+            name: invention.getName(),
+            inventors: []
         });
+        console.log(inventionCreated);
         return this.toRespDto(inventionCreated);
     }
     /**

@@ -152,7 +152,7 @@ exports.inventionDeletePost = async (req, res) => {
     const id = req.params.id;
     await inventionservice.delete(id);
 
-    res.redirect("/crud/invention");
+    res.redirect("/crud/inventions");
 };
 
 //Felajánláshoz:

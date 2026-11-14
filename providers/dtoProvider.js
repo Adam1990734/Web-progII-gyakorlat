@@ -1,4 +1,4 @@
-const inventionRequestDto = require("../models/invention/InventionResponseDto");
+const inventionRequestDto = require("../models/invention/InventionRequestDto");
 const inventorRequestDto = require("../models/inventor/InventorRequestDto");
 const messageRequestDto = require("../models/message/messageRequestDto");
 
